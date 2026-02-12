@@ -207,11 +207,126 @@
     document.body.insertBefore(skipLink, document.body.firstChild);
 
     // ===========================
+    // Dynamic Theme Switcher
+    // ===========================
+
+    const themeToggle = document.getElementById('themeToggle');
+    const themePalette = document.getElementById('themePalette');
+
+    // Dynamic color cycling over time
+    const themes = ['dusk', 'dawn', 'twilight', 'sage', 'rose', 'slate'];
+    let currentThemeIndex = 0;
+    let autoThemeInterval = null;
+    let isAutoThemeEnabled = true;
+
+    if (themeToggle && themePalette) {
+        // Check if user previously disabled auto-theme
+        const autoThemeDisabled = localStorage.getItem('llm-frontiers-auto-theme-disabled');
+        if (autoThemeDisabled === 'true') {
+            isAutoThemeEnabled = false;
+        }
+
+        // Load saved theme or start with dusk
+        const savedTheme = localStorage.getItem('llm-frontiers-theme');
+        if (savedTheme) {
+            document.body.setAttribute('data-theme', savedTheme);
+            currentThemeIndex = themes.indexOf(savedTheme);
+            if (currentThemeIndex === -1) currentThemeIndex = 0;
+            updateActiveSwatchUI(savedTheme);
+        }
+
+        // Start auto theme cycling (every 30 seconds)
+        function startAutoThemeCycling() {
+            if (!isAutoThemeEnabled) return;
+
+            autoThemeInterval = setInterval(function() {
+                currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+                const nextTheme = themes[currentThemeIndex];
+
+                if (nextTheme === 'dusk') {
+                    document.body.removeAttribute('data-theme');
+                } else {
+                    document.body.setAttribute('data-theme', nextTheme);
+                }
+
+                updateActiveSwatchUI(nextTheme);
+            }, 10000); // Change theme every 10 seconds
+        }
+
+        // Update the active swatch UI
+        function updateActiveSwatchUI(theme) {
+            const swatches = themePalette.querySelectorAll('.theme-swatch');
+            swatches.forEach(function(s) {
+                s.classList.toggle('active', s.getAttribute('data-theme') === theme);
+            });
+        }
+
+        // Stop auto cycling when user manually selects a theme
+        function stopAutoThemeCycling() {
+            if (autoThemeInterval) {
+                clearInterval(autoThemeInterval);
+                autoThemeInterval = null;
+            }
+        }
+
+        // Start the automatic theme cycling
+        startAutoThemeCycling();
+
+        // Toggle palette visibility
+        themeToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            themePalette.classList.toggle('active');
+        });
+
+        // Handle swatch clicks
+        var swatches = themePalette.querySelectorAll('.theme-swatch');
+        swatches.forEach(function(swatch) {
+            swatch.addEventListener('click', function(e) {
+                e.stopPropagation();
+                var theme = this.getAttribute('data-theme');
+
+                // User manually selected a theme, stop auto-cycling
+                stopAutoThemeCycling();
+                isAutoThemeEnabled = false;
+                localStorage.setItem('llm-frontiers-auto-theme-disabled', 'true');
+
+                // Update active swatch
+                swatches.forEach(function(s) { s.classList.remove('active'); });
+                this.classList.add('active');
+
+                // Apply theme
+                if (theme === 'dusk') {
+                    document.body.removeAttribute('data-theme');
+                    localStorage.removeItem('llm-frontiers-theme');
+                } else {
+                    document.body.setAttribute('data-theme', theme);
+                    localStorage.setItem('llm-frontiers-theme', theme);
+                }
+
+                // Update current index
+                currentThemeIndex = themes.indexOf(theme);
+
+                // Close palette after selection
+                setTimeout(function() {
+                    themePalette.classList.remove('active');
+                }, 300);
+            });
+        });
+
+        // Close palette when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!themePalette.contains(e.target) && !themeToggle.contains(e.target)) {
+                themePalette.classList.remove('active');
+            }
+        });
+    }
+
+    // ===========================
     // Console Easter Egg
     // ===========================
 
-    console.log('%cLLM Frontiers Workshop', 'color: #00205B; font-size: 24px; font-weight: bold;');
-    console.log('%cAdvancement Meets Responsibility', 'color: #4A90E2; font-size: 16px;');
+    console.log('%c2026 Large Language Model Workshop', 'color: #3B4F6B; font-size: 24px; font-weight: bold;');
+    console.log('%cRice University — March 13, 2026', 'color: #5A7FA0; font-size: 16px;');
     console.log('Interested in LLM research? Join us at Rice University!');
 
 })();
