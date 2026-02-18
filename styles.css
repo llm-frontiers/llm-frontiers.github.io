@@ -1001,24 +1001,92 @@ a:hover {
     }
 
     /* Hero mobile */
-    .hero { min-height: 100svh; }
+    .hero {
+        min-height: 100svh;
+        align-items: flex-start;
+        padding-top: 60px;
+        padding-bottom: 80px;
+    }
 
-    .hero-content { padding: 0 24px; }
+    .hero-content {
+        padding: 0 20px;
+        gap: 0;
+    }
 
-    .hero-title-top  { font-size: clamp(20px, 5vw, 32px); }
-    .hero-title-main { font-size: clamp(56px, 14vw, 90px); }
+    /* Eyebrow — allow wrapping, tighten spacing */
+    .hero-eyebrow {
+        gap: 12px;
+        margin-bottom: 24px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 
-    .hero-meta { flex-direction: column; border-radius: 14px; }
-    .hero-meta-badge { padding: 18px 24px; }
+    .hero-eyebrow-text {
+        font-size: 10px;
+        letter-spacing: 0.12em;
+        white-space: normal;
+        text-align: center;
+    }
+
+    .hero-eyebrow-line { display: none; }
+
+    /* Title */
+    .hero-title {
+        margin-bottom: 24px;
+    }
+
+    .hero-title-top  { font-size: clamp(18px, 5vw, 28px); }
+    .hero-title-main { font-size: clamp(52px, 15vw, 86px); }
+
+    /* Meta row — stack vertically, tighter padding */
+    .hero-meta {
+        flex-direction: column;
+        border-radius: 14px;
+        margin-bottom: 14px;
+        max-width: 100%;
+    }
+
+    .hero-meta-badge {
+        padding: 14px 20px;
+        gap: 14px;
+    }
+
+    .hero-meta-icon { font-size: 22px; }
+
     .hero-meta-divider { width: 100%; height: 1px; align-self: auto; }
-    .hero-meta-value { font-size: 18px; }
 
-    .hero-stats { flex-direction: column; border-radius: 14px; }
-    .hero-stat { padding: 20px 24px; width: 100%; }
-    .hero-stat-sep { width: 100%; height: 1px; align-self: auto; }
-    .hero-stat-number { font-size: 36px; }
+    .hero-meta-value { font-size: 17px; }
 
-    .hero-eyebrow-text { font-size: 11px; letter-spacing: 0.14em; }
+    .hero-meta-label { font-size: 9px; }
+
+    /* Stats row — keep horizontal but shrink padding */
+    .hero-stats {
+        flex-direction: row;
+        border-radius: 14px;
+        margin-bottom: 24px;
+        max-width: 100%;
+    }
+
+    .hero-stat {
+        padding: 16px 8px;
+        flex: 1;
+        gap: 4px;
+    }
+
+    .hero-stat-sep { width: 1px; height: auto; align-self: stretch; }
+
+    .hero-stat-number { font-size: 32px; }
+
+    .hero-stat-label {
+        font-size: 9px;
+        letter-spacing: 0.08em;
+    }
+
+    /* Tagline */
+    .hero-tagline {
+        font-size: 14px;
+        letter-spacing: 0.06em;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1030,7 +1098,16 @@ a:hover {
 
     .sponsor-item { min-width: 100%; max-width: 100%; }
 
-    .hero-meta-badge { font-size: 0.82rem; padding: 7px 14px; }
+    /* Very small phones — stack stats vertically */
+    .hero-stats { flex-direction: column; }
+
+    .hero-stat { padding: 12px 20px; width: 100%; }
+
+    .hero-stat-sep { width: 100%; height: 1px; align-self: auto; }
+
+    .hero-stat-number { font-size: 28px; }
+
+    .hero-title-main { font-size: clamp(48px, 16vw, 72px); }
 }
 
 /* ===========================
