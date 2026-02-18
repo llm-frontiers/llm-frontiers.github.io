@@ -1,0 +1,198 @@
+/* ===========================
+   Chinese New Year — Year of the Fire Horse 🐎
+   Decorative overlay styles
+   =========================== */
+
+/* CNY greeting badge */
+.cny-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 28px;
+    padding: 9px 22px;
+    background: linear-gradient(135deg, rgba(180, 20, 20, 0.82), rgba(200, 60, 20, 0.78));
+    border: 1px solid rgba(255, 200, 80, 0.55);
+    border-radius: 999px;
+    backdrop-filter: blur(8px);
+    box-shadow:
+        0 0 18px rgba(220, 60, 20, 0.35),
+        inset 0 1px 0 rgba(255, 220, 100, 0.25);
+    animation: cnyBadgePulse 3s ease-in-out infinite;
+}
+
+.cny-badge-text {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: rgba(255, 235, 160, 0.95);
+    white-space: nowrap;
+}
+
+.cny-badge-icon {
+    font-size: 18px;
+    line-height: 1;
+}
+
+@keyframes cnyBadgePulse {
+    0%, 100% { box-shadow: 0 0 18px rgba(220, 60, 20, 0.35), inset 0 1px 0 rgba(255, 220, 100, 0.25); }
+    50%       { box-shadow: 0 0 32px rgba(220, 60, 20, 0.6),  inset 0 1px 0 rgba(255, 220, 100, 0.4);  }
+}
+
+/* ===========================
+   Lanterns
+   =========================== */
+
+.cny-lantern {
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 3;
+    pointer-events: none;
+    user-select: none;
+}
+
+.cny-lantern-left  { left: clamp(16px, 4vw, 70px);  animation: lanternSwayLeft  6s ease-in-out infinite; }
+.cny-lantern-right { right: clamp(16px, 4vw, 70px); animation: lanternSwayRight 7s ease-in-out infinite; }
+
+/* Hanging string from top */
+.lantern-string {
+    width: 2px;
+    height: 36px;
+    background: linear-gradient(to bottom, rgba(255, 200, 80, 0.6), rgba(255, 200, 80, 0.2));
+    flex-shrink: 0;
+}
+
+/* Lantern body */
+.lantern-body {
+    position: relative;
+    width: 64px;
+    height: 84px;
+    background: linear-gradient(160deg, #E82020 0%, #C01010 40%, #A00808 70%, #C01010 100%);
+    border-radius: 50% / 35%;
+    border: 2px solid rgba(255, 200, 60, 0.7);
+    box-shadow:
+        0 0 24px rgba(220, 40, 20, 0.65),
+        0 0 60px rgba(220, 40, 20, 0.3),
+        inset 0 0 20px rgba(255, 120, 50, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    order: 2;
+}
+
+/* Ribbing lines */
+.lantern-body::before,
+.lantern-body::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: rgba(255, 200, 60, 0.22);
+    border-radius: 2px;
+}
+.lantern-body::before { left: calc(50% - 12px); }
+.lantern-body::after  { left: calc(50% + 10px); }
+
+/* Inner warm glow */
+.lantern-glow {
+    position: absolute;
+    inset: 10px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 200, 80, 0.45) 0%, transparent 70%);
+    animation: lanternFlicker 2.8s ease-in-out infinite;
+}
+
+.lantern-char {
+    position: relative;
+    z-index: 1;
+    font-size: 26px;
+    color: rgba(255, 230, 120, 0.95);
+    font-family: Georgia, serif;
+    text-shadow: 0 0 8px rgba(255, 200, 60, 0.8);
+    line-height: 1;
+}
+
+/* String above body */
+.cny-lantern .lantern-string { order: 1; }
+
+/* Tassel below body */
+.lantern-tassel {
+    order: 3;
+    display: flex;
+    gap: 5px;
+    margin-top: 0;
+}
+
+.lantern-tassel span {
+    display: block;
+    width: 2px;
+    height: clamp(24px, 3vw, 40px);
+    background: linear-gradient(to bottom, rgba(255, 200, 60, 0.85), transparent);
+    border-radius: 2px;
+    animation: tasselSway 2.2s ease-in-out infinite;
+}
+
+.lantern-tassel span:nth-child(2) { animation-delay: 0.15s; height: clamp(30px, 3.5vw, 50px); }
+.lantern-tassel span:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes lanternSwayLeft {
+    0%, 100% { transform: rotate(-4deg) translateY(0px); }
+    50%       { transform: rotate(4deg)  translateY(6px); }
+}
+
+@keyframes lanternSwayRight {
+    0%, 100% { transform: rotate(4deg)  translateY(0px); }
+    50%       { transform: rotate(-4deg) translateY(8px); }
+}
+
+@keyframes lanternFlicker {
+    0%, 100% { opacity: 0.85; transform: scale(1); }
+    40%       { opacity: 1;    transform: scale(1.08); }
+    70%       { opacity: 0.75; transform: scale(0.96); }
+}
+
+@keyframes tasselSway {
+    0%, 100% { transform: skewX(-3deg); }
+    50%       { transform: skewX(3deg); }
+}
+
+/* ===========================
+   Falling petals canvas
+   =========================== */
+
+.cny-petals-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.7;
+}
+
+/* ===========================
+   Responsive — hide lanterns on very small screens
+   =========================== */
+
+@media (max-width: 480px) {
+    .cny-lantern { display: none; }
+    .cny-badge-text { font-size: 11px; letter-spacing: 0.1em; }
+}
+
+/* ===========================
+   Respect reduced-motion
+   =========================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .cny-lantern,
+    .cny-badge,
+    .lantern-glow,
+    .lantern-tassel span {
+        animation: none !important;
+    }
+    .cny-petals-canvas { display: none; }
+}
