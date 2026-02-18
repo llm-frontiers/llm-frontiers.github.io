@@ -9,31 +9,31 @@
 }
 
 :root {
-    /* Dusk Morandi Renaissance Color Palette — derived from workshop background image */
-    --primary-blue: #3B4F6B;
-    --secondary-gray: #7A7580;
-    --accent-blue: #A87D8B;
-    --light-gray: #E4DDE0;
-    --white: #F0EBF0;
-    --text-dark: #3A3540;
-    --text-light: #5E5868;
-    --border-color: #C8BFC6;
+    /* Rose Morandi Renaissance — default palette */
+    --primary-blue: #5A3A45;
+    --secondary-gray: #8A7078;
+    --accent-blue: #B08090;
+    --light-gray: #EDE2E6;
+    --white: #F5EEF0;
+    --text-dark: #3A2830;
+    --text-light: #6A5058;
+    --border-color: #D8C8CC;
 
-    /* Extended Morandi Dusk Colors */
+    /* Extended Morandi Rose Colors */
     --sage-green: #7A9A76;
-    --dusty-rose: #C4A0A8;
-    --warm-taupe: #A09098;
-    --soft-terracotta: #B08088;
-    --muted-lavender: #9B8DAE;
+    --dusty-rose: #D0B0B8;
+    --warm-taupe: #C0A0A8;
+    --soft-terracotta: #C08088;
+    --muted-lavender: #B898A8;
     --ochre: #C4A57B;
-    --soft-blue: #7E9AB8;
+    --soft-blue: #B07080;
 
-    /* Dusk Sky Gradient Colors */
-    --dusk-sky-top: #5A7FA0;
-    --dusk-sky-mid: #8B7EA0;
-    --dusk-sky-low: #B88DA0;
-    --dusk-horizon: #D4A0A8;
-    --dusk-warm: #C9A098;
+    /* Rose Sky Gradient Colors */
+    --dusk-sky-top: #B07080;
+    --dusk-sky-mid: #C8909A;
+    --dusk-sky-low: #D8A8B0;
+    --dusk-horizon: #D0A0A8;
+    --dusk-warm: #C89098;
 
     /* Typography */
     --font-serif: 'Merriweather', Georgia, serif;
@@ -119,7 +119,7 @@ a:hover {
    =========================== */
 
 .navbar {
-    background: linear-gradient(to bottom, #F0EBF0, #E8E2EA);
+    background: linear-gradient(to bottom, #F5EEF0, #EDE2E6);
     box-shadow: 0 2px 10px rgba(40, 30, 50, 0.1);
     position: sticky;
     top: 0;
@@ -186,81 +186,186 @@ a:hover {
 .hero {
     position: relative;
     width: 100%;
+    min-height: 92vh;
     overflow: hidden;
-    background: var(--primary-blue);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 80px 24px 72px;
     text-align: center;
+    /* Rich layered background: deep Rice blue-grey to warm rose at the horizon */
+    background:
+        linear-gradient(
+            175deg,
+            #1C2B3A 0%,
+            #2B3F58 20%,
+            #3B4F6B 40%,
+            #5A4A5C 62%,
+            #7A4A5A 80%,
+            #8A5060 100%
+        );
+}
+
+/* Subtle noise/texture overlay */
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E") repeat;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Decorative bottom fade into the next section */
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 90px;
+    background: linear-gradient(to bottom, transparent, rgba(237, 226, 230, 0.18));
+    pointer-events: none;
+    z-index: 1;
 }
 
 .hero-content {
-    max-width: 720px;
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
     width: 100%;
+    padding: 100px 32px 110px;
     color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+/* Rice University eyebrow label */
 .hero-pin {
-    font-size: 0.85rem;
-    letter-spacing: 0.12em;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    opacity: 0.75;
-    margin-bottom: 16px;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 28px;
+    padding: 6px 18px;
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 100px;
+    backdrop-filter: blur(4px);
 }
 
 .hero-title {
     font-family: 'Merriweather', Georgia, serif;
-    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-size: clamp(2.4rem, 5.5vw, 4rem);
     font-weight: 700;
-    line-height: 1.2;
-    margin: 0 0 14px;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 0 0 10px;
+    color: #fff;
+    text-shadow: 0 2px 24px rgba(0,0,0,0.35);
+}
+
+/* Elegant separator line under title */
+.hero-title-rule {
+    width: 64px;
+    height: 3px;
+    background: linear-gradient(to right, rgba(255,255,255,0.2), rgba(255,255,255,0.75), rgba(255,255,255,0.2));
+    border-radius: 2px;
+    margin: 22px auto 22px;
 }
 
 .hero-host {
-    font-size: 1.15rem;
-    font-weight: 500;
-    opacity: 0.88;
-    margin: 0 0 36px;
-    letter-spacing: 0.02em;
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: rgba(255,255,255,0.72);
+    margin: 0 0 48px;
+    letter-spacing: 0.04em;
 }
 
+/* Info card */
 .hero-details {
-    display: inline-flex;
-    flex-direction: column;
-    gap: 14px;
+    display: inline-grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
     text-align: left;
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 12px;
-    padding: 24px 32px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 16px;
+    overflow: hidden;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.12);
 }
 
 .hero-detail-item {
     display: flex;
     align-items: flex-start;
-    gap: 12px;
-    font-size: 1rem;
-    line-height: 1.5;
+    gap: 14px;
+    padding: 24px 28px;
+    font-size: 0.97rem;
+    line-height: 1.55;
+    border-right: 1px solid rgba(255,255,255,0.1);
+}
+
+.hero-detail-item:last-child {
+    border-right: none;
 }
 
 .hero-detail-icon {
-    font-size: 1.2rem;
+    font-size: 1.35rem;
     flex-shrink: 0;
-    margin-top: 1px;
+    margin-top: 2px;
+    filter: drop-shadow(0 1px 3px rgba(0,0,0,0.3));
+}
+
+.hero-detail-label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 5px;
 }
 
 .hero-detail-text {
-    opacity: 0.95;
+    color: rgba(255,255,255,0.92);
 }
 
 .hero-location-name {
     font-weight: 600;
+    color: #fff;
+    display: block;
 }
 
 .hero-location-floor {
-    opacity: 0.8;
-    font-size: 0.95rem;
+    color: rgba(255,255,255,0.65);
+    font-size: 0.9rem;
+}
+
+/* Responsive hero */
+@media (max-width: 600px) {
+    .hero {
+        min-height: auto;
+    }
+    .hero-details {
+        grid-template-columns: 1fr;
+    }
+    .hero-detail-item {
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        padding: 18px 22px;
+    }
+    .hero-detail-item:last-child {
+        border-bottom: none;
+    }
+    .hero-title {
+        font-size: 2rem;
+    }
 }
 
 /* ===========================
@@ -269,7 +374,7 @@ a:hover {
 
 .about {
     padding: var(--spacing-xl) 0;
-    background: linear-gradient(145deg, #E4DDE0 0%, #D8CED6 30%, #C4A0A8 70%, #B8A0A8 100%);
+    background: linear-gradient(145deg, #EDE2E6 0%, #DDD0D4 30%, #D0B0B8 70%, #C0A0A8 100%);
     position: relative;
 }
 
@@ -347,7 +452,7 @@ a:hover {
 
 .speakers {
     padding: var(--spacing-xl) 0;
-    background: linear-gradient(160deg, #D8CED6 0%, #C4A0A8 20%, #B08088 40%, #E4DDE0 60%, #F0EBF0 80%, #D8CED6 100%);
+    background: linear-gradient(160deg, #DDD0D4 0%, #D0B0B8 20%, #C08088 40%, #EDE2E6 60%, #F5EEF0 80%, #DDD0D4 100%);
     position: relative;
 }
 
@@ -378,7 +483,7 @@ a:hover {
 }
 
 .speaker-card {
-    background: linear-gradient(135deg, #F5F0F5 0%, #F0EBF0 50%, #E4DDE0 100%);
+    background: linear-gradient(135deg, #FAF5F6 0%, #F5EEF0 50%, #EDE2E6 100%);
     padding: var(--spacing-lg);
     border-radius: 12px;
     box-shadow: 0 3px 12px rgba(40, 30, 50, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.5);
@@ -472,7 +577,7 @@ a:hover {
 
 .schedule {
     padding: var(--spacing-xl) 0;
-    background: linear-gradient(120deg, #C4A57B 0%, #D4B88A 15%, #E4DDE0 35%, #F0EBF0 55%, #E4DDE0 75%, #D8CED6 100%);
+    background: linear-gradient(120deg, #C8909A 0%, #D0A0A8 15%, #EDE2E6 35%, #F5EEF0 55%, #EDE2E6 75%, #DDD0D4 100%);
     position: relative;
 }
 
@@ -574,7 +679,7 @@ a:hover {
 
 .organizers {
     padding: var(--spacing-xl) 0;
-    background: linear-gradient(165deg, #8B7EA0 0%, #9B8DAE 20%, #A89AB8 40%, #C4A0A8 60%, #B08088 80%, #9A8F98 100%);
+    background: linear-gradient(165deg, #B07080 0%, #B88088 20%, #C09098 40%, #D0B0B8 60%, #C08088 80%, #A87880 100%);
     position: relative;
 }
 
@@ -607,7 +712,7 @@ a:hover {
 }
 
 .organizer-card {
-    background: linear-gradient(145deg, #F5F0F5 0%, #F0EBF0 30%, #E4DDE0 70%, #D8CED6 100%);
+    background: linear-gradient(145deg, #FAF5F6 0%, #F5EEF0 30%, #EDE2E6 70%, #DDD0D4 100%);
     padding: var(--spacing-lg);
     border-radius: 12px;
     box-shadow: 0 4px 16px rgba(40, 30, 50, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.6);
@@ -669,7 +774,7 @@ a:hover {
     font-size: 0.9rem;
     color: var(--muted-lavender);
     padding: var(--spacing-xs) var(--spacing-md);
-    background: linear-gradient(135deg, #E4DDE0, #C4A0A8);
+    background: linear-gradient(135deg, #EDE2E6, #D0B0B8);
     border-radius: 6px;
     border: 1px solid rgba(140, 120, 160, 0.3);
     transition: all var(--transition-fast);
@@ -688,7 +793,7 @@ a:hover {
 
 .sponsors {
     padding: var(--spacing-xl) 0;
-    background: linear-gradient(145deg, #F0EBF0 0%, #E4DDE0 40%, #D8CED6 100%);
+    background: linear-gradient(145deg, #F5EEF0 0%, #EDE2E6 40%, #DDD0D4 100%);
     position: relative;
 }
 
@@ -762,7 +867,7 @@ a:hover {
    =========================== */
 
 .footer {
-    background: linear-gradient(135deg, #2E2838 0%, #3B4F6B 30%, #4A5A70 60%, #3B4F6B 100%);
+    background: linear-gradient(135deg, #302028 0%, #5A3A45 30%, #4A2A38 60%, #5A3A45 100%);
     color: var(--white);
     padding: var(--spacing-lg) 0 var(--spacing-md);
     position: relative;
@@ -1278,11 +1383,6 @@ body {
     /* Speakers */
     .speakers-grid {
         grid-template-columns: 1fr;
-    }
-
-    /* Hero */
-    .hero-poster {
-        max-height: none;
     }
 
     /* Theme Switcher */

@@ -215,7 +215,7 @@
 
     // Dynamic color cycling over time
     const themes = ['dusk', 'dawn', 'twilight', 'sage', 'rose', 'slate'];
-    let currentThemeIndex = 0;
+    let currentThemeIndex = 4; // default: rose
     let autoThemeInterval = null;
     let isAutoThemeEnabled = true;
 
@@ -226,13 +226,17 @@
             isAutoThemeEnabled = false;
         }
 
-        // Load saved theme or start with dusk
+        // Load saved theme or apply default rose
         const savedTheme = localStorage.getItem('llm-frontiers-theme');
         if (savedTheme) {
             document.body.setAttribute('data-theme', savedTheme);
             currentThemeIndex = themes.indexOf(savedTheme);
-            if (currentThemeIndex === -1) currentThemeIndex = 0;
+            if (currentThemeIndex === -1) currentThemeIndex = 4;
             updateActiveSwatchUI(savedTheme);
+        } else {
+            // Apply rose as default
+            document.body.setAttribute('data-theme', 'rose');
+            updateActiveSwatchUI('rose');
         }
 
         // Start auto theme cycling (every 30 seconds)
