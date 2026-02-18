@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Merriweather:wght@300;400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation -->
@@ -40,28 +40,49 @@
 
     <!-- Hero Section -->
     <section class="hero">
+        <!-- Decorative background orbs -->
+        <div class="hero-orb hero-orb-1"></div>
+        <div class="hero-orb hero-orb-2"></div>
+        <div class="hero-orb hero-orb-3"></div>
+
+        <!-- Ghost year watermark -->
+        <div class="hero-year-bg" aria-hidden="true">2026</div>
+
         <div class="hero-content">
-            <div class="hero-pin">📌 Rice University &nbsp;·&nbsp; 2026</div>
-            <h1 class="hero-title">2026 Large Language Model Workshop</h1>
-            <div class="hero-title-rule"></div>
-            <p class="hero-host">Hosted by the Department of Computer Science, Rice University</p>
-            <div class="hero-details">
-                <div class="hero-detail-item">
-                    <span class="hero-detail-icon">📅</span>
-                    <div class="hero-detail-text">
-                        <span class="hero-detail-label">Date</span>
-                        March 13, 2026
-                    </div>
+            <!-- Eyebrow -->
+            <div class="hero-eyebrow">
+                <span class="hero-eyebrow-line"></span>
+                <span class="hero-eyebrow-text">Rice University &nbsp;·&nbsp; Department of Computer Science</span>
+                <span class="hero-eyebrow-line"></span>
+            </div>
+
+            <!-- Main title -->
+            <h1 class="hero-title">
+                <span class="hero-title-top">Large Language Model</span>
+                <span class="hero-title-main">Workshop</span>
+            </h1>
+
+            <!-- Subtitle rule + date badge -->
+            <div class="hero-meta">
+                <div class="hero-meta-badge">
+                    <span class="hero-meta-icon">📅</span>
+                    <span>March 13, 2026</span>
                 </div>
-                <div class="hero-detail-item">
-                    <span class="hero-detail-icon">📍</span>
-                    <div class="hero-detail-text">
-                        <span class="hero-detail-label">Location</span>
-                        <span class="hero-location-name">Ralph S. O'Connor Building<br>for Engineering &amp; Science</span>
-                        <span class="hero-location-floor">5th Floor</span>
-                    </div>
+                <div class="hero-meta-divider"></div>
+                <div class="hero-meta-badge">
+                    <span class="hero-meta-icon">📍</span>
+                    <span>Ralph S. O'Connor Building, 5th Floor</span>
                 </div>
             </div>
+
+            <!-- Tagline -->
+            <p class="hero-tagline">Exploring the Frontiers of AI — Houston, Texas</p>
+        </div>
+
+        <!-- Scroll cue -->
+        <div class="hero-scroll-cue" aria-hidden="true">
+            <span class="hero-scroll-label">Scroll</span>
+            <div class="hero-scroll-line"></div>
         </div>
     </section>
 
@@ -344,31 +365,6 @@
             </div>
         </div>
     </footer>
-
-    <!-- Theme Switcher -->
-    <div class="theme-switcher">
-        <div class="theme-palette" id="themePalette">
-            <div class="theme-label">Theme</div>
-            <div class="theme-palette-row">
-                <button class="theme-swatch" data-theme="dusk" title="Dusk" aria-label="Dusk theme"></button>
-                <button class="theme-swatch" data-theme="dawn" title="Dawn" aria-label="Dawn theme"></button>
-                <button class="theme-swatch" data-theme="twilight" title="Twilight" aria-label="Twilight theme"></button>
-            </div>
-            <div class="theme-palette-row">
-                <button class="theme-swatch" data-theme="sage" title="Sage" aria-label="Sage theme"></button>
-                <button class="theme-swatch active" data-theme="rose" title="Rose (Default)" aria-label="Rose theme"></button>
-                <button class="theme-swatch" data-theme="slate" title="Slate" aria-label="Slate theme"></button>
-            </div>
-        </div>
-        <button class="theme-toggle-btn" id="themeToggle" title="Change background theme" aria-label="Toggle theme palette">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5" fill="none"/>
-                <circle cx="7" cy="8" r="2" fill="currentColor"/>
-                <circle cx="13" cy="8" r="2" fill="currentColor"/>
-                <circle cx="10" cy="14" r="2" fill="currentColor"/>
-            </svg>
-        </button>
-    </div>
 
     <script src="script.js"></script>
 </body>
