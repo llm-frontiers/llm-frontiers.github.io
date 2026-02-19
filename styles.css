@@ -333,9 +333,10 @@ a:hover {
     font-weight: 700;
     font-style: normal;
     letter-spacing: -0.025em;
-    line-height: 0.9;
+    line-height: 1.05;
     display: block;
     white-space: nowrap;
+    padding-bottom: 0.08em;
     background: linear-gradient(135deg, #fff 0%, #F8D0D8 45%, #fff 70%, #F0C8D0 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
