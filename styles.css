@@ -329,12 +329,13 @@ a:hover {
 }
 
 .hero-title-main {
-    font-size: clamp(72px, 11vw, 140px);
+    font-size: clamp(48px, 7.5vw, 110px);
     font-weight: 700;
     font-style: normal;
     letter-spacing: -0.025em;
     line-height: 0.9;
     display: block;
+    white-space: nowrap;
     background: linear-gradient(135deg, #fff 0%, #F8D0D8 45%, #fff 70%, #F0C8D0 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -454,30 +455,38 @@ a:hover {
     color: rgba(255,255,255,0.45);
 }
 
-/* Registration CTA button */
+.hero-stat-number--sm {
+    font-size: 28px;
+}
+
+/* Registration CTA pill button */
 .hero-register-btn {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    margin-top: 32px;
-    padding: 16px 36px;
-    background: linear-gradient(135deg, var(--rose-deep), var(--primary));
+    gap: 12px;
+    margin-top: 8px;
+    margin-bottom: 28px;
+    padding: 15px 40px;
+    background: rgba(255, 255, 255, 0.12);
     color: #fff;
     font-family: var(--font-sans);
-    font-size: 0.95rem;
+    font-size: 0.97rem;
     font-weight: 600;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.07em;
     border-radius: 999px;
-    border: 1.5px solid rgba(255,255,255,0.2);
-    box-shadow: 0 6px 24px rgba(90, 30, 45, 0.45);
-    transition: transform var(--ease-md), box-shadow var(--ease-md), background var(--ease-md);
+    border: 1.5px solid rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.18);
+    transition: background var(--ease-md), border-color var(--ease-md), transform var(--ease-md), box-shadow var(--ease-md);
     text-decoration: none;
+    white-space: nowrap;
 }
 
 .hero-register-btn:hover {
-    background: linear-gradient(135deg, #C08090, var(--primary-light));
-    transform: translateY(-3px);
-    box-shadow: 0 10px 32px rgba(90, 30, 45, 0.55);
+    background: rgba(255, 255, 255, 0.22);
+    border-color: rgba(255, 255, 255, 0.75);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
     color: #fff;
 }
 
@@ -1149,8 +1158,7 @@ a:hover {
 
     /* Register button */
     .hero-register-btn {
-        margin-top: 20px;
-        padding: 13px 28px;
+        padding: 13px 30px;
         font-size: 0.88rem;
     }
 }
