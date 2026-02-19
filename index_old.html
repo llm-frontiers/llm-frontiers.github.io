@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="2026 Large Language Model Workshop - A one-day workshop at Rice University exploring large language models and responsible AI.">
+    <meta name="keywords" content="LLM, Large Language Models, AI, Responsible AI, Workshop, Rice University, Natural Language Processing">
+    <meta name="author" content="Rice University Computer Science Department">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Rice Workshop on Large Language Models | Rice University">
+    <meta property="og:description" content="A one-day workshop at Rice University bringing together researchers and practitioners to explore the forefront of LLM development and responsible AI practices.">
+
+    <title>Rice Workshop on Large Language Models | Rice University</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="cny.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Merriweather:wght@300;400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">Rice LLM Workshop</div>
+            <ul class="nav-menu">
+                <li><a href="#about">About</a></li>
+                <li><a href="#speakers">Speakers</a></li>
+                <li><a href="#schedule">Schedule</a></li>
+                <li><a href="#organizers">Organizers</a></li>
+                <li><a href="#sponsors">Sponsors</a></li>
+                <li><a href="https://RiceLLMWorkshop26.eventbrite.com" target="_blank" rel="noopener noreferrer" class="nav-register">Register</a></li>
+            </ul>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- Decorative background orbs -->
+        <div class="hero-orb hero-orb-1"></div>
+        <div class="hero-orb hero-orb-2"></div>
+        <div class="hero-orb hero-orb-3"></div>
+
+        <!-- CNY falling petals canvas -->
+        <canvas class="cny-petals-canvas" aria-hidden="true"></canvas>
+
+        <!-- Ghost year watermark -->
+        <div class="hero-year-bg" aria-hidden="true">2026</div>
+
+        <div class="hero-content">
+            <!-- Main title -->
+            <h1 class="hero-title">
+                <span class="hero-title-top">Rice Workshop on</span>
+                <span class="hero-title-main">Large Language Models</span>
+            </h1>
+
+            <!-- Date + Location cards -->
+            <div class="hero-meta">
+                <div class="hero-meta-badge">
+                    <span class="hero-meta-icon">📅</span>
+                    <div class="hero-meta-text">
+                        <span class="hero-meta-label">Date</span>
+                        <span class="hero-meta-value">March 13, 2026</span>
+                    </div>
+                </div>
+                <div class="hero-meta-divider"></div>
+                <div class="hero-meta-badge">
+                    <span class="hero-meta-icon">📍</span>
+                    <div class="hero-meta-text">
+                        <span class="hero-meta-label">Location</span>
+                        <span class="hero-meta-value">Ralph S. O'Connor Building, 5th Fl.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats row -->
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="hero-stat-number">8</span>
+                    <span class="hero-stat-label">Invited Speakers</span>
+                </div>
+                <div class="hero-stat-sep"></div>
+                <div class="hero-stat">
+                    <span class="hero-stat-number">1</span>
+                    <span class="hero-stat-label">Full Day</span>
+                </div>
+                <div class="hero-stat-sep"></div>
+                <div class="hero-stat">
+                    <span class="hero-stat-number hero-stat-number--sm">Rice University</span>
+                    <span class="hero-stat-label">Dept. of Computer Science · Houston, TX</span>
+                </div>
+            </div>
+
+            <!-- Registration CTA -->
+            <a href="https://RiceLLMWorkshop26.eventbrite.com" target="_blank" rel="noopener noreferrer" class="hero-register-btn">
+                Reserve Your Spot
+                <span class="hero-register-arrow">→</span>
+            </a>
+
+            <!-- Tagline -->
+            <p class="hero-tagline">Exploring the Frontiers of AI &mdash; Houston, Texas</p>
+        </div>
+
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About the Workshop</h2>
+            <div class="about-content">
+                <div class="about-description">
+                    <p>Large Language Models (LLMs) have rapidly evolved into foundational tools across industries and research domains, driving unprecedented advances in natural language understanding, generation, and reasoning. At the same time, their growing scale raises pressing challenges around transparency, safety, fairness, and accountability.</p>
+
+                    <p>This one-day workshop at Rice University brings together researchers and practitioners to explore the forefront of LLM development — from novel architectures, data curation, and training strategies to interpretability, agentic AI, and human-AI collaboration — while fostering interdisciplinary connections across the broader research community.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Speakers Section -->
+    <section id="speakers" class="speakers">
+        <div class="container">
+            <h2 class="section-title">Invited Speakers</h2>
+            <div class="speakers-grid">
+                <div class="speaker-card">
+                    <div class="speaker-photo">
+                        <img src="assets/speakers/raymond-mooney.jpg" alt="Raymond J. Mooney">
+                    </div>
+                    <div class="speaker-info">
+                        <h3 class="speaker-name"><a href="https://www.cs.utexas.edu/people/faculty-researchers/raymond-mooney" target="_blank" rel="noopener noreferrer">Raymond J. Mooney</a></h3>
+                        <p class="speaker-title">Professor</p>
+                        <p class="speaker-affiliation">Computer Science<br>The University of Texas at Austin</p>
+                    </div>
+                </div>
+
+                <div class="speaker-card">
+                    <div class="speaker-photo">
+                        <img src="assets/speakers/yangfeng-ji.png" alt="Yangfeng Ji">
+                    </div>
+                    <div class="speaker-info">
+                        <h3 class="speaker-name"><a href="https://engineering.virginia.edu/faculty/yangfeng-ji" target="_blank" rel="noopener noreferrer">Yangfeng Ji</a></h3>
+                        <p class="speaker-title">Associate Professor</p>
+                        <p class="speaker-affiliation">Computer Science<br>University of Virginia</p>
+                    </div>
+                </div>
+
+                <div class="speaker-card">
+                    <div class="speaker-photo">
+                        <img src="assets/speakers/arman-cohan.webp" alt="Arman Cohan">
+                    </div>
+                    <div class="speaker-info">
+                        <h3 class="speaker-name"><a href="https://engineering.yale.edu/research-and-faculty/faculty-directory/arman-cohan" target="_blank" rel="noopener noreferrer">Arman Cohan</a></h3>
+                        <p class="speaker-title">Assistant Professor</p>
+                        <p class="speaker-affiliation">Computer Science<br>Yale University</p>
+                    </div>
+                </div>
+
+                <div class="speaker-card">
+                    <div class="speaker-photo">
+                        <img src="assets/speakers/mark-yatskar.jpg" alt="Mark Yatskar">
+                    </div>
+                    <div class="speaker-info">
+                        <h3 class="speaker-name"><a href="https://www.grasp.upenn.edu/people/mark-yatskar/" target="_blank" rel="noopener noreferrer">Mark Yatskar</a></h3>
+                        <p class="speaker-title">Assistant Professor</p>
+                        <p class="speaker-affiliation">Computer and Information Science<br>University of Pennsylvania</p>
+                    </div>
+                </div>
+
+                <div class="speaker-card">
+                    <div class="speaker-photo photo-offset-down">
+                        <img src="assets/speakers/vera-liao.jpg" alt="Vera Liao">
+                    </div>
+                    <div class="speaker-info">
+                        <h3 class="speaker-name"><a href="https://midas.umich.edu/directory/vera-liao/" target="_blank" rel="noopener noreferrer">Vera Liao</a></h3>
+                        <p class="speaker-title">Associate Professor</p>
+                        <p class="speaker-affiliation">Computer Science and Engineering<br>University of Michigan</p>
+                    </div>
+                </div>
+
+                <div class="speaker-card">
+                    <div class="speaker-photo">
+                        <img src="assets/speakers/jiawei-zhou.jpg" alt="Jiawei Zhou">
+                    </div>
+                    <div class="speaker-info">
+                        <h3 class="speaker-name"><a href="https://www.cs.stonybrook.edu/people/faculty/jiawei-joezhou" target="_blank" rel="noopener noreferrer">Jiawei Zhou</a></h3>
+                        <p class="speaker-title">Assistant Professor</p>
+                        <p class="speaker-affiliation">Computer Science<br>Stony Brook University</p>
+                    </div>
+                </div>
+
+                <div class="speaker-card">
+                    <div class="speaker-photo photo-offset-down">
+                        <img src="assets/speakers/kuan-hao-huang.jpg" alt="Kuan-Hao Huang">
+                    </div>
+                    <div class="speaker-info">
+                        <h3 class="speaker-name"><a href="https://engineering.tamu.edu/cse/profiles/huang-kuan-hao.html" target="_blank" rel="noopener noreferrer">Kuan-Hao Huang</a></h3>
+                        <p class="speaker-title">Assistant Professor</p>
+                        <p class="speaker-affiliation">Computer Science & Engineering<br>Texas A&M University</p>
+                    </div>
+                </div>
+
+                <div class="speaker-card">
+                    <div class="speaker-photo">
+                        <img src="assets/speakers/elias-stengel-eskin.png" alt="Elias Stengel-Eskin">
+                    </div>
+                    <div class="speaker-info">
+                        <h3 class="speaker-name"><a href="https://www.cs.utexas.edu/people/faculty-researchers/elias-stengel-eskin" target="_blank" rel="noopener noreferrer">Elias Stengel-Eskin</a></h3>
+                        <p class="speaker-title">Assistant Professor</p>
+                        <p class="speaker-affiliation">Computer Science<br>The University of Texas at Austin</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section id="schedule" class="schedule">
+        <div class="container">
+            <h2 class="section-title">Schedule</h2>
+            <div class="schedule-timeline">
+                <div class="schedule-item">
+                    <div class="schedule-time">8:30 – 9:00</div>
+                    <div class="schedule-content">
+                        <h3>Registration & Coffee</h3>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">9:00 – 9:10</div>
+                    <div class="schedule-content">
+                        <h3>Opening Remarks</h3>
+                        <p class="schedule-detail">Hanjie Chen &amp; Vicente Ordóñez</p>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">9:10 – 9:55</div>
+                    <div class="schedule-content">
+                        <h3>Talk 1 — Raymond J. Mooney</h3>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">9:55 – 10:40</div>
+                    <div class="schedule-content">
+                        <h3>Talk 2 — Yangfeng Ji</h3>
+                    </div>
+                </div>
+
+                <div class="schedule-item break">
+                    <div class="schedule-time">10:40 – 11:00</div>
+                    <div class="schedule-content">
+                        <h3>Coffee Break</h3>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">11:00 – 11:45</div>
+                    <div class="schedule-content">
+                        <h3>Talk 3 — Arman Cohan</h3>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">11:45 – 12:30</div>
+                    <div class="schedule-content">
+                        <h3>Talk 4 — Mark Yatskar</h3>
+                    </div>
+                </div>
+
+                <div class="schedule-item break">
+                    <div class="schedule-time">12:30 – 14:00</div>
+                    <div class="schedule-content">
+                        <h3>Lunch Time</h3>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">14:00 – 14:45</div>
+                    <div class="schedule-content">
+                        <h3>Talk 5 — Vera Liao</h3>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">14:45 – 15:30</div>
+                    <div class="schedule-content">
+                        <h3>Talk 6 — Jiawei Zhou</h3>
+                    </div>
+                </div>
+
+                <div class="schedule-item break">
+                    <div class="schedule-time">15:30 – 16:00</div>
+                    <div class="schedule-content">
+                        <h3>Coffee Break</h3>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">16:00 – 16:45</div>
+                    <div class="schedule-content">
+                        <h3>Talk 7 — Kuan-Hao Huang</h3>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">16:45 – 17:30</div>
+                    <div class="schedule-content">
+                        <h3>Talk 8 — Elias Stengel-Eskin</h3>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">17:30 – 17:40</div>
+                    <div class="schedule-content">
+                        <h3>Closing Remarks</h3>
+                        <p class="schedule-detail">Hanjie Chen &amp; Vicente Ordóñez</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Organizers Section -->
+    <section id="organizers" class="organizers">
+        <div class="container">
+            <h2 class="section-title">Organizers</h2>
+            <div class="organizers-grid">
+                <div class="organizer-card">
+                    <div class="organizer-photo">
+                        <img src="assets/organizers/hanjie-chen.jpg" alt="Hanjie Chen">
+                    </div>
+                    <h3 class="organizer-name"><a href="https://hanjiechen.github.io/" target="_blank" rel="noopener noreferrer">Hanjie Chen</a></h3>
+                    <p class="organizer-title">Assistant Professor</p>
+                    <p class="organizer-affiliation">Department of Computer Science<br>Rice University</p>
+                    <a href="mailto:hanjie@rice.edu" class="organizer-email">hanjie@rice.edu</a>
+                </div>
+
+                <div class="organizer-card">
+                    <div class="organizer-photo">
+                        <img src="assets/organizers/vicente-ordonez.jpg" alt="Vicente Ordóñez">
+                    </div>
+                    <h3 class="organizer-name"><a href="https://www.cs.rice.edu/~vo9/" target="_blank" rel="noopener noreferrer">Vicente Ordóñez</a></h3>
+                    <p class="organizer-title">Associate Professor</p>
+                    <p class="organizer-affiliation">Department of Computer Science<br>Rice University</p>
+                    <a href="mailto:vicenteor@rice.edu" class="organizer-email">vicenteor@rice.edu</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sponsors Section -->
+    <section id="sponsors" class="sponsors">
+        <div class="container">
+            <h2 class="section-title">Sponsors</h2>
+            <div class="sponsors-list">
+                <div class="sponsor-item">
+                    <h3><a href="https://research.rice.edu/creative-ventures" target="_blank" rel="noopener noreferrer">Rice University Creative Ventures Funds</a></h3>
+                    <p>Office of Research</p>
+                </div>
+                <div class="sponsor-item">
+                    <h3><a href="https://cs.rice.edu" target="_blank" rel="noopener noreferrer">Rice Engineering and Computing</a></h3>
+                    <p>Computer Science</p>
+                </div>
+                <div class="sponsor-item">
+                    <h3><a href="https://kenkennedy.rice.edu" target="_blank" rel="noopener noreferrer">Rice Ken Kennedy Institute</a></h3>
+                    <p>AI, Data, and Computing for Global Impact</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Rice Workshop on Large Language Models</h3>
+                    <p>Department of Computer Science<br>Rice University<br>Houston, Texas</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="https://cs.rice.edu" target="_blank" rel="noopener noreferrer">Rice CS Department</a></li>
+                        <li><a href="https://www.rice.edu" target="_blank" rel="noopener noreferrer">Rice University</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Rice University. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="cny.js"></script>
+</body>
+</html>

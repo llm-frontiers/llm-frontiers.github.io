@@ -3,402 +3,1440 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="2026 Large Language Model Workshop - A one-day workshop at Rice University exploring large language models and responsible AI.">
-    <meta name="keywords" content="LLM, Large Language Models, AI, Responsible AI, Workshop, Rice University, Natural Language Processing">
-    <meta name="author" content="Rice University Computer Science Department">
-
-    <!-- Open Graph / Social Media -->
+    <meta name="description" content="2026 Rice Workshop on Large Language Models — A one-day workshop at Rice University exploring large language models and responsible AI.">
+    <meta name="keywords" content="LLM, Large Language Models, AI, Responsible AI, Workshop, Rice University, Natural Language Processing, NLP">
+    <meta name="author" content="Rice University Department of Computer Science">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Rice Workshop on Large Language Models | Rice University">
     <meta property="og:description" content="A one-day workshop at Rice University bringing together researchers and practitioners to explore the forefront of LLM development and responsible AI practices.">
-
     <title>Rice Workshop on Large Language Models | Rice University</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="cny.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Merriweather:wght@300;400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===========================
+           CSS RESET & BASE
+        =========================== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            /* Rice Official Colors */
+            --rice-blue:       #00205B;
+            --rich-blue:       #0A509E;
+            --medium-blue:     #4D9AD4;
+            --bright-blue:     #9FDDF9;
+            --light-blue-gray: #ADC7DC;
+            --light-gray:      #E0E2E6;
+            --dark-gray:       #44474F;
+            --rice-gray:       #7C7E7F;
+            --midnight:        #13133E;
+            --warm-yellow:     #E9A139;
+
+            /* Neutral */
+            --white:           #FFFFFF;
+            --off-white:       #F8F9FB;
+            --text-dark:       #1A1A2E;
+            --text-mid:        #44474F;
+            --text-light:      #7C7E7F;
+            --border:          #D6DAE4;
+
+            /* Typography */
+            --font-serif:  'Crimson Pro', Georgia, serif;
+            --font-sans:   'Source Sans 3', system-ui, sans-serif;
+
+            /* Spacing */
+            --section-py: 80px;
+            --container:  1120px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--text-dark);
+            background: var(--white);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: var(--container);
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* ===========================
+           NAVIGATION
+        =========================== */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--rice-blue);
+            border-bottom: 3px solid var(--warm-yellow);
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-sans);
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.04em;
+            color: var(--white);
+            text-transform: uppercase;
+        }
+
+        .nav-brand-logo {
+            height: 32px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            display: block;
+            padding: 6px 14px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            color: rgba(255,255,255,0.82);
+            border-radius: 4px;
+            transition: color 0.15s, background 0.15s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--white);
+            background: rgba(255,255,255,0.12);
+        }
+
+        .nav-register {
+            margin-left: 8px;
+            padding: 7px 18px !important;
+            background: var(--warm-yellow) !important;
+            color: var(--rice-blue) !important;
+            font-weight: 700 !important;
+            border-radius: 4px;
+            letter-spacing: 0.03em;
+            transition: opacity 0.15s !important;
+        }
+
+        .nav-register:hover {
+            opacity: 0.88;
+            background: var(--warm-yellow) !important;
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+            border-radius: 2px;
+        }
+
+        /* ===========================
+           HERO
+        =========================== */
+        .hero {
+            position: relative;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            overflow: hidden;
+        }
+
+        /* Background image layer */
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('assets/rice_logo/rice_background.png');
+            background-size: cover;
+            background-position: center 30%;
+            background-repeat: no-repeat;
+        }
+
+        /* Dark gradient overlay for legibility — stronger at bottom */
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(0, 16, 48, 0.45) 0%,
+                rgba(0, 16, 48, 0.72) 55%,
+                rgba(0, 16, 60, 0.92) 100%
+            );
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            padding: 80px 0 56px;
+        }
+
+        .hero-inner .container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--warm-yellow);
+            margin-bottom: 22px;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            display: block;
+            width: 32px;
+            height: 2px;
+            background: var(--warm-yellow);
+            flex-shrink: 0;
+        }
+
+        .hero-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-weight: 300;
+            line-height: 1.1;
+            color: var(--white);
+            margin-bottom: 36px;
+            letter-spacing: -0.01em;
+        }
+
+        .hero-title strong {
+            font-weight: 600;
+            display: block;
+        }
+
+        /* Info pills row */
+        .hero-info-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .hero-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 18px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.22);
+            border-radius: 100px;
+            backdrop-filter: blur(8px);
+        }
+
+        .hero-pill-icon {
+            font-size: 0.85rem;
+            opacity: 0.85;
+        }
+
+        .hero-pill-text {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--white);
+            letter-spacing: 0.02em;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 13px 32px;
+            background: var(--warm-yellow);
+            color: var(--rice-blue);
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.04em;
+            border-radius: 4px;
+            transition: opacity 0.15s;
+        }
+
+        .btn-primary:hover { opacity: 0.88; }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.75);
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            padding-bottom: 2px;
+            transition: color 0.15s, border-color 0.15s;
+        }
+
+        .btn-secondary:hover {
+            color: var(--white);
+            border-color: var(--white);
+        }
+
+        /* ===========================
+           SECTION BASE
+        =========================== */
+        section {
+            padding: var(--section-py) 0;
+        }
+
+        .section-header {
+            margin-bottom: 48px;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--rich-blue);
+            margin-bottom: 10px;
+        }
+
+        .section-label::before {
+            content: '';
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: var(--warm-yellow);
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(1.8rem, 3vw, 2.6rem);
+            font-weight: 400;
+            color: var(--rice-blue);
+            line-height: 1.2;
+        }
+
+        /* ===========================
+           ABOUT
+        =========================== */
+        .about {
+            background: var(--off-white);
+            border-top: 4px solid var(--rice-blue);
+        }
+
+        .about-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: start;
+        }
+
+        .about-text p {
+            font-size: 1.0625rem;
+            color: var(--text-mid);
+            line-height: 1.75;
+            margin-bottom: 18px;
+        }
+
+        .about-text p:last-child { margin-bottom: 0; }
+
+        .about-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .info-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--rice-blue);
+            border-radius: 4px;
+            padding: 20px 22px;
+        }
+
+        .info-card-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--rice-gray);
+            margin-bottom: 6px;
+        }
+
+        .info-card-value {
+            font-size: 1.0625rem;
+            font-weight: 600;
+            color: var(--rice-blue);
+        }
+
+        .info-card-sub {
+            font-size: 0.875rem;
+            color: var(--text-mid);
+            margin-top: 2px;
+        }
+
+        /* ===========================
+           SPEAKERS
+        =========================== */
+        .speakers {
+            background: var(--white);
+        }
+
+        .speakers-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px;
+        }
+
+        .speaker-card {
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            overflow: hidden;
+            background: var(--white);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .speaker-card:hover {
+            border-color: var(--medium-blue);
+            box-shadow: 0 4px 20px rgba(0,32,91,0.08);
+        }
+
+        .speaker-photo {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            background: var(--light-gray);
+        }
+
+        .speaker-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .speaker-photo img.photo-center { object-position: center center; }
+
+        .speaker-body {
+            padding: 16px 18px 20px;
+        }
+
+        .speaker-name {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--rice-blue);
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+
+        .speaker-name a:hover {
+            text-decoration: underline;
+        }
+
+        .speaker-role {
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            color: var(--rich-blue);
+            margin-bottom: 4px;
+        }
+
+        .speaker-affil {
+            font-size: 0.82rem;
+            color: var(--text-mid);
+            line-height: 1.45;
+        }
+
+        /* ===========================
+           SCHEDULE
+        =========================== */
+        .schedule {
+            background: var(--off-white);
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9375rem;
+        }
+
+        .schedule-table thead th {
+            background: var(--rice-blue);
+            color: var(--white);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 14px 20px;
+            text-align: left;
+        }
+
+        .schedule-table thead th:first-child {
+            width: 160px;
+        }
+
+        .schedule-table tbody tr {
+            border-bottom: 1px solid var(--border);
+            background: var(--white);
+        }
+
+        .schedule-table tbody tr:last-child { border-bottom: none; }
+
+        .schedule-table tbody tr.break-row {
+            background: var(--off-white);
+        }
+
+        .schedule-table tbody tr.break-row td {
+            color: var(--rice-gray);
+            font-style: italic;
+        }
+
+        .schedule-table td {
+            padding: 14px 20px;
+            vertical-align: top;
+        }
+
+        .schedule-time {
+            font-family: var(--font-sans);
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: var(--rice-blue);
+            white-space: nowrap;
+        }
+
+        .schedule-event {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .schedule-speaker {
+            font-size: 0.875rem;
+            color: var(--text-mid);
+            margin-top: 2px;
+        }
+
+        .schedule-tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            background: var(--light-gray);
+            color: var(--dark-gray);
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        .schedule-tag.talk {
+            background: rgba(0,32,91,0.08);
+            color: var(--rice-blue);
+        }
+
+        /* ===========================
+           ORGANIZERS
+        =========================== */
+        .organizers {
+            background: var(--white);
+        }
+
+        .organizers-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .organizer-card {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            max-width: 380px;
+            padding: 24px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            background: var(--white);
+        }
+
+        .organizer-photo {
+            width: 88px;
+            height: 88px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 3px solid var(--light-gray);
+        }
+
+        .organizer-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .organizer-info {}
+
+        .organizer-name {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--rice-blue);
+            margin-bottom: 4px;
+        }
+
+        .organizer-name a:hover { text-decoration: underline; }
+
+        .organizer-role {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--rich-blue);
+            margin-bottom: 2px;
+        }
+
+        .organizer-dept {
+            font-size: 0.82rem;
+            color: var(--text-mid);
+            line-height: 1.45;
+            margin-bottom: 10px;
+        }
+
+        .organizer-email {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.82rem;
+            color: var(--rich-blue);
+            font-weight: 500;
+        }
+
+        .organizer-email:hover { text-decoration: underline; }
+
+        /* ===========================
+           SPONSORS
+        =========================== */
+        .sponsors {
+            background: var(--off-white);
+        }
+
+        .sponsors-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .sponsor-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 36px 28px 28px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        /* Fixed-size logo container — normalizes all logo aspect ratios */
+        .sponsor-logo-box {
+            width: 100%;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sponsor-logo {
+            max-width: 200px;
+            max-height: 80px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .sponsor-divider {
+            width: 40px;
+            height: 1px;
+            background: var(--border);
+            flex-shrink: 0;
+        }
+
+        .sponsor-name {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--rice-blue);
+            line-height: 1.35;
+        }
+
+        .sponsor-name a:hover { text-decoration: underline; }
+
+        .sponsor-desc {
+            font-size: 0.83rem;
+            color: var(--text-mid);
+            margin-top: -4px;
+        }
+
+        /* ===========================
+           FOOTER
+        =========================== */
+        .footer {
+            background: var(--rice-blue);
+            color: rgba(255,255,255,0.75);
+            padding: 48px 0 0;
+        }
+
+        .footer-inner {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+            padding-bottom: 40px;
+        }
+
+        .footer-brand img {
+            height: 36px;
+            width: auto;
+            filter: brightness(0) invert(1);
+            margin-bottom: 16px;
+        }
+
+        .footer-brand-name {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+
+        .footer-brand p {
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+
+        .footer-col-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--light-blue-gray);
+            margin-bottom: 16px;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .footer-links a {
+            font-size: 0.875rem;
+            color: rgba(255,255,255,0.65);
+            transition: color 0.15s;
+        }
+
+        .footer-links a:hover { color: var(--white); }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.12);
+            padding: 18px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .footer-bottom p {
+            font-size: 0.8rem;
+        }
+
+        /* ===========================
+           RESPONSIVE
+        =========================== */
+        @media (max-width: 1024px) {
+            .speakers-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .about-layout {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about-sidebar {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root { --section-py: 56px; }
+
+            .hero {
+                min-height: 480px;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                right: 0;
+                background: var(--rice-blue);
+                flex-direction: column;
+                padding: 16px 0;
+                border-bottom: 3px solid var(--warm-yellow);
+                gap: 0;
+            }
+
+            .nav-menu.open { display: flex; }
+
+            .nav-menu a {
+                padding: 10px 24px;
+                border-radius: 0;
+            }
+
+            .nav-register {
+                margin: 8px 16px 0 !important;
+                border-radius: 4px;
+            }
+
+            .nav-toggle { display: flex; }
+
+            .speakers-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .sponsors-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-inner {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .about-sidebar {
+                grid-template-columns: 1fr;
+            }
+
+            .organizers-grid {
+                gap: 24px;
+            }
+
+            .organizer-card {
+                max-width: 100%;
+            }
+
+            .hero-info-row {
+                gap: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 0 18px; }
+
+            .sponsors-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .speakers-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+
+            .organizer-card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .organizer-email {
+                justify-content: center;
+            }
+
+            .hero-pill-text {
+                font-size: 0.82rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
+
+    <!-- ===================== NAVIGATION ===================== -->
+    <nav class="navbar" role="navigation" aria-label="Primary navigation">
         <div class="container">
-            <div class="nav-brand">Rice LLM Workshop</div>
-            <ul class="nav-menu">
+            <div class="nav-brand">
+                <img src="assets/rice_logo/rice_cs_logo.png" alt="Rice University" class="nav-brand-logo">
+                <span>LLM Workshop 2026</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
                 <li><a href="#about">About</a></li>
                 <li><a href="#speakers">Speakers</a></li>
                 <li><a href="#schedule">Schedule</a></li>
                 <li><a href="#organizers">Organizers</a></li>
                 <li><a href="#sponsors">Sponsors</a></li>
-                <li><a href="https://RiceLLMWorkshop26.eventbrite.com" target="_blank" rel="noopener noreferrer" class="nav-register">Register</a></li>
+                <li>
+                    <a href="https://RiceLLMWorkshop26.eventbrite.com"
+                       target="_blank" rel="noopener noreferrer"
+                       class="nav-register">Register</a>
+                </li>
             </ul>
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-menu">
+                <span></span><span></span><span></span>
             </button>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <!-- Decorative background orbs -->
-        <div class="hero-orb hero-orb-1"></div>
-        <div class="hero-orb hero-orb-2"></div>
-        <div class="hero-orb hero-orb-3"></div>
+    <!-- ===================== HERO ===================== -->
+    <header class="hero" role="banner">
+        <!-- Background image with dark overlay -->
+        <div class="hero-bg" aria-hidden="true"></div>
 
-        <!-- CNY falling petals canvas -->
-        <canvas class="cny-petals-canvas" aria-hidden="true"></canvas>
+        <div class="hero-inner">
+            <div class="container">
+                <p class="hero-eyebrow">Rice University · Department of Computer Science</p>
 
-        <!-- Ghost year watermark -->
-        <div class="hero-year-bg" aria-hidden="true">2026</div>
+                <h1 class="hero-title">
+                    Rice Workshop on<br>
+                    <strong>Large Language Models</strong>
+                </h1>
 
-        <div class="hero-content">
-            <!-- Main title -->
-            <h1 class="hero-title">
-                <span class="hero-title-top">Rice Workshop on</span>
-                <span class="hero-title-main">Large Language Models</span>
-            </h1>
-
-            <!-- Date + Location cards -->
-            <div class="hero-meta">
-                <div class="hero-meta-badge">
-                    <span class="hero-meta-icon">📅</span>
-                    <div class="hero-meta-text">
-                        <span class="hero-meta-label">Date</span>
-                        <span class="hero-meta-value">March 13, 2026</span>
-                    </div>
+                <div class="hero-info-row">
+                    <span class="hero-pill">
+                        <span class="hero-pill-icon">📅</span>
+                        <span class="hero-pill-text">March 13, 2026</span>
+                    </span>
+                    <span class="hero-pill">
+                        <span class="hero-pill-icon">📍</span>
+                        <span class="hero-pill-text">Ralph S. O'Connor Building, 5th Floor</span>
+                    </span>
+                    <span class="hero-pill">
+                        <span class="hero-pill-icon">🎓</span>
+                        <span class="hero-pill-text">Rice University · Houston, Texas</span>
+                    </span>
                 </div>
-                <div class="hero-meta-divider"></div>
-                <div class="hero-meta-badge">
-                    <span class="hero-meta-icon">📍</span>
-                    <div class="hero-meta-text">
-                        <span class="hero-meta-label">Location</span>
-                        <span class="hero-meta-value">Ralph S. O'Connor Building, 5th Fl.</span>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Stats row -->
-            <div class="hero-stats">
-                <div class="hero-stat">
-                    <span class="hero-stat-number">8</span>
-                    <span class="hero-stat-label">Invited Speakers</span>
-                </div>
-                <div class="hero-stat-sep"></div>
-                <div class="hero-stat">
-                    <span class="hero-stat-number">1</span>
-                    <span class="hero-stat-label">Full Day</span>
-                </div>
-                <div class="hero-stat-sep"></div>
-                <div class="hero-stat">
-                    <span class="hero-stat-number hero-stat-number--sm">Rice University</span>
-                    <span class="hero-stat-label">Dept. of Computer Science · Houston, TX</span>
+                <div class="hero-actions">
+                    <a href="https://RiceLLMWorkshop26.eventbrite.com"
+                       target="_blank" rel="noopener noreferrer"
+                       class="btn-primary">
+                        Register Now &rarr;
+                    </a>
+                    <a href="#about" class="btn-secondary">Learn more &darr;</a>
                 </div>
             </div>
-
-            <!-- Registration CTA -->
-            <a href="https://RiceLLMWorkshop26.eventbrite.com" target="_blank" rel="noopener noreferrer" class="hero-register-btn">
-                Reserve Your Spot
-                <span class="hero-register-arrow">→</span>
-            </a>
-
-            <!-- Tagline -->
-            <p class="hero-tagline">Exploring the Frontiers of AI &mdash; Houston, Texas</p>
         </div>
+    </header>
 
-    </section>
-
-    <!-- About Section -->
+    <!-- ===================== ABOUT ===================== -->
     <section id="about" class="about">
         <div class="container">
-            <h2 class="section-title">About the Workshop</h2>
-            <div class="about-content">
-                <div class="about-description">
-                    <p>Large Language Models (LLMs) have rapidly evolved into foundational tools across industries and research domains, driving unprecedented advances in natural language understanding, generation, and reasoning. At the same time, their growing scale raises pressing challenges around transparency, safety, fairness, and accountability.</p>
+            <div class="about-layout">
+                <div>
+                    <div class="section-header">
+                        <p class="section-label">About the Workshop</p>
+                        <h2 class="section-title">Exploring the Frontiers of AI</h2>
+                    </div>
+                    <div class="about-text">
+                        <p>Large Language Models (LLMs) have rapidly evolved into foundational tools across industries and research domains, driving unprecedented advances in natural language understanding, generation, and reasoning. At the same time, their growing scale raises pressing challenges around transparency, safety, fairness, and accountability.</p>
+                        <p>This one-day workshop at Rice University brings together researchers and practitioners to explore the forefront of LLM development — from novel architectures, data curation, and training strategies to interpretability, agentic AI, and human-AI collaboration — while fostering interdisciplinary connections across the broader research community.</p>
+                    </div>
+                </div>
 
-                    <p>This one-day workshop at Rice University brings together researchers and practitioners to explore the forefront of LLM development — from novel architectures, data curation, and training strategies to interpretability, agentic AI, and human-AI collaboration — while fostering interdisciplinary connections across the broader research community.</p>
+                <div class="about-sidebar">
+                    <div class="info-card">
+                        <div class="info-card-label">Date</div>
+                        <div class="info-card-value">March 13, 2026</div>
+                        <div class="info-card-sub">Friday</div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-card-label">Venue</div>
+                        <div class="info-card-value">Ralph S. O'Connor Building</div>
+                        <div class="info-card-sub">5th Floor · Rice University</div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-card-label">Format</div>
+                        <div class="info-card-value">In-Person</div>
+                        <div class="info-card-sub">Full-day workshop · Free admission</div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-card-label">Registration</div>
+                        <div class="info-card-value">Open Now</div>
+                        <div class="info-card-sub"><a href="https://RiceLLMWorkshop26.eventbrite.com" target="_blank" rel="noopener noreferrer" style="color:var(--rich-blue);">Eventbrite &rarr;</a></div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Speakers Section -->
+    <!-- ===================== SPEAKERS ===================== -->
     <section id="speakers" class="speakers">
         <div class="container">
-            <h2 class="section-title">Invited Speakers</h2>
+            <div class="section-header">
+                <p class="section-label">Invited Speakers</p>
+                <h2 class="section-title">Distinguished Speakers</h2>
+            </div>
             <div class="speakers-grid">
-                <div class="speaker-card">
+
+                <article class="speaker-card">
                     <div class="speaker-photo">
                         <img src="assets/speakers/raymond-mooney.jpg" alt="Raymond J. Mooney">
                     </div>
-                    <div class="speaker-info">
-                        <h3 class="speaker-name"><a href="https://www.cs.utexas.edu/people/faculty-researchers/raymond-mooney" target="_blank" rel="noopener noreferrer">Raymond J. Mooney</a></h3>
-                        <p class="speaker-title">Professor</p>
-                        <p class="speaker-affiliation">Computer Science<br>The University of Texas at Austin</p>
+                    <div class="speaker-body">
+                        <h3 class="speaker-name">
+                            <a href="https://www.cs.utexas.edu/people/faculty-researchers/raymond-mooney"
+                               target="_blank" rel="noopener noreferrer">Raymond J. Mooney</a>
+                        </h3>
+                        <p class="speaker-role">Professor</p>
+                        <p class="speaker-affil">Computer Science<br>UT Austin</p>
                     </div>
-                </div>
+                </article>
 
-                <div class="speaker-card">
+                <article class="speaker-card">
                     <div class="speaker-photo">
                         <img src="assets/speakers/yangfeng-ji.png" alt="Yangfeng Ji">
                     </div>
-                    <div class="speaker-info">
-                        <h3 class="speaker-name"><a href="https://engineering.virginia.edu/faculty/yangfeng-ji" target="_blank" rel="noopener noreferrer">Yangfeng Ji</a></h3>
-                        <p class="speaker-title">Associate Professor</p>
-                        <p class="speaker-affiliation">Computer Science<br>University of Virginia</p>
+                    <div class="speaker-body">
+                        <h3 class="speaker-name">
+                            <a href="https://engineering.virginia.edu/faculty/yangfeng-ji"
+                               target="_blank" rel="noopener noreferrer">Yangfeng Ji</a>
+                        </h3>
+                        <p class="speaker-role">Associate Professor</p>
+                        <p class="speaker-affil">Computer Science<br>University of Virginia</p>
                     </div>
-                </div>
+                </article>
 
-                <div class="speaker-card">
+                <article class="speaker-card">
                     <div class="speaker-photo">
                         <img src="assets/speakers/arman-cohan.webp" alt="Arman Cohan">
                     </div>
-                    <div class="speaker-info">
-                        <h3 class="speaker-name"><a href="https://engineering.yale.edu/research-and-faculty/faculty-directory/arman-cohan" target="_blank" rel="noopener noreferrer">Arman Cohan</a></h3>
-                        <p class="speaker-title">Assistant Professor</p>
-                        <p class="speaker-affiliation">Computer Science<br>Yale University</p>
+                    <div class="speaker-body">
+                        <h3 class="speaker-name">
+                            <a href="https://engineering.yale.edu/research-and-faculty/faculty-directory/arman-cohan"
+                               target="_blank" rel="noopener noreferrer">Arman Cohan</a>
+                        </h3>
+                        <p class="speaker-role">Assistant Professor</p>
+                        <p class="speaker-affil">Computer Science<br>Yale University</p>
                     </div>
-                </div>
+                </article>
 
-                <div class="speaker-card">
+                <article class="speaker-card">
                     <div class="speaker-photo">
                         <img src="assets/speakers/mark-yatskar.jpg" alt="Mark Yatskar">
                     </div>
-                    <div class="speaker-info">
-                        <h3 class="speaker-name"><a href="https://www.grasp.upenn.edu/people/mark-yatskar/" target="_blank" rel="noopener noreferrer">Mark Yatskar</a></h3>
-                        <p class="speaker-title">Assistant Professor</p>
-                        <p class="speaker-affiliation">Computer and Information Science<br>University of Pennsylvania</p>
+                    <div class="speaker-body">
+                        <h3 class="speaker-name">
+                            <a href="https://www.grasp.upenn.edu/people/mark-yatskar/"
+                               target="_blank" rel="noopener noreferrer">Mark Yatskar</a>
+                        </h3>
+                        <p class="speaker-role">Assistant Professor</p>
+                        <p class="speaker-affil">Computer and Information Science<br>University of Pennsylvania</p>
                     </div>
-                </div>
+                </article>
 
-                <div class="speaker-card">
-                    <div class="speaker-photo photo-offset-down">
-                        <img src="assets/speakers/vera-liao.jpg" alt="Vera Liao">
+                <article class="speaker-card">
+                    <div class="speaker-photo">
+                        <img src="assets/speakers/vera-liao.jpg" alt="Vera Liao" class="photo-center">
                     </div>
-                    <div class="speaker-info">
-                        <h3 class="speaker-name"><a href="https://midas.umich.edu/directory/vera-liao/" target="_blank" rel="noopener noreferrer">Vera Liao</a></h3>
-                        <p class="speaker-title">Associate Professor</p>
-                        <p class="speaker-affiliation">Computer Science and Engineering<br>University of Michigan</p>
+                    <div class="speaker-body">
+                        <h3 class="speaker-name">
+                            <a href="https://midas.umich.edu/directory/vera-liao/"
+                               target="_blank" rel="noopener noreferrer">Vera Liao</a>
+                        </h3>
+                        <p class="speaker-role">Associate Professor</p>
+                        <p class="speaker-affil">CSE Department<br>University of Michigan</p>
                     </div>
-                </div>
+                </article>
 
-                <div class="speaker-card">
+                <article class="speaker-card">
                     <div class="speaker-photo">
                         <img src="assets/speakers/jiawei-zhou.jpg" alt="Jiawei Zhou">
                     </div>
-                    <div class="speaker-info">
-                        <h3 class="speaker-name"><a href="https://www.cs.stonybrook.edu/people/faculty/jiawei-joezhou" target="_blank" rel="noopener noreferrer">Jiawei Zhou</a></h3>
-                        <p class="speaker-title">Assistant Professor</p>
-                        <p class="speaker-affiliation">Computer Science<br>Stony Brook University</p>
+                    <div class="speaker-body">
+                        <h3 class="speaker-name">
+                            <a href="https://www.cs.stonybrook.edu/people/faculty/jiawei-joezhou"
+                               target="_blank" rel="noopener noreferrer">Jiawei Zhou</a>
+                        </h3>
+                        <p class="speaker-role">Assistant Professor</p>
+                        <p class="speaker-affil">Computer Science<br>Stony Brook University</p>
                     </div>
-                </div>
+                </article>
 
-                <div class="speaker-card">
-                    <div class="speaker-photo photo-offset-down">
+                <article class="speaker-card">
+                    <div class="speaker-photo">
                         <img src="assets/speakers/kuan-hao-huang.jpg" alt="Kuan-Hao Huang">
                     </div>
-                    <div class="speaker-info">
-                        <h3 class="speaker-name"><a href="https://engineering.tamu.edu/cse/profiles/huang-kuan-hao.html" target="_blank" rel="noopener noreferrer">Kuan-Hao Huang</a></h3>
-                        <p class="speaker-title">Assistant Professor</p>
-                        <p class="speaker-affiliation">Computer Science & Engineering<br>Texas A&M University</p>
+                    <div class="speaker-body">
+                        <h3 class="speaker-name">
+                            <a href="https://engineering.tamu.edu/cse/profiles/huang-kuan-hao.html"
+                               target="_blank" rel="noopener noreferrer">Kuan-Hao Huang</a>
+                        </h3>
+                        <p class="speaker-role">Assistant Professor</p>
+                        <p class="speaker-affil">CS&amp;E Department<br>Texas A&amp;M University</p>
                     </div>
-                </div>
+                </article>
 
-                <div class="speaker-card">
+                <article class="speaker-card">
                     <div class="speaker-photo">
                         <img src="assets/speakers/elias-stengel-eskin.png" alt="Elias Stengel-Eskin">
                     </div>
-                    <div class="speaker-info">
-                        <h3 class="speaker-name"><a href="https://www.cs.utexas.edu/people/faculty-researchers/elias-stengel-eskin" target="_blank" rel="noopener noreferrer">Elias Stengel-Eskin</a></h3>
-                        <p class="speaker-title">Assistant Professor</p>
-                        <p class="speaker-affiliation">Computer Science<br>The University of Texas at Austin</p>
+                    <div class="speaker-body">
+                        <h3 class="speaker-name">
+                            <a href="https://www.cs.utexas.edu/people/faculty-researchers/elias-stengel-eskin"
+                               target="_blank" rel="noopener noreferrer">Elias Stengel-Eskin</a>
+                        </h3>
+                        <p class="speaker-role">Assistant Professor</p>
+                        <p class="speaker-affil">Computer Science<br>UT Austin</p>
                     </div>
-                </div>
+                </article>
+
             </div>
         </div>
     </section>
 
-    <!-- Schedule Section -->
+    <!-- ===================== SCHEDULE ===================== -->
     <section id="schedule" class="schedule">
         <div class="container">
-            <h2 class="section-title">Schedule</h2>
-            <div class="schedule-timeline">
-                <div class="schedule-item">
-                    <div class="schedule-time">8:30 – 9:00</div>
-                    <div class="schedule-content">
-                        <h3>Registration & Coffee</h3>
-                    </div>
-                </div>
-
-                <div class="schedule-item">
-                    <div class="schedule-time">9:00 – 9:10</div>
-                    <div class="schedule-content">
-                        <h3>Opening Remarks</h3>
-                        <p class="schedule-detail">Hanjie Chen &amp; Vicente Ordóñez</p>
-                    </div>
-                </div>
-
-                <div class="schedule-item">
-                    <div class="schedule-time">9:10 – 9:55</div>
-                    <div class="schedule-content">
-                        <h3>Talk 1 — Raymond J. Mooney</h3>
-                    </div>
-                </div>
-
-                <div class="schedule-item">
-                    <div class="schedule-time">9:55 – 10:40</div>
-                    <div class="schedule-content">
-                        <h3>Talk 2 — Yangfeng Ji</h3>
-                    </div>
-                </div>
-
-                <div class="schedule-item break">
-                    <div class="schedule-time">10:40 – 11:00</div>
-                    <div class="schedule-content">
-                        <h3>Coffee Break</h3>
-                    </div>
-                </div>
-
-                <div class="schedule-item">
-                    <div class="schedule-time">11:00 – 11:45</div>
-                    <div class="schedule-content">
-                        <h3>Talk 3 — Arman Cohan</h3>
-                    </div>
-                </div>
-
-                <div class="schedule-item">
-                    <div class="schedule-time">11:45 – 12:30</div>
-                    <div class="schedule-content">
-                        <h3>Talk 4 — Mark Yatskar</h3>
-                    </div>
-                </div>
-
-                <div class="schedule-item break">
-                    <div class="schedule-time">12:30 – 14:00</div>
-                    <div class="schedule-content">
-                        <h3>Lunch Time</h3>
-                    </div>
-                </div>
-
-                <div class="schedule-item">
-                    <div class="schedule-time">14:00 – 14:45</div>
-                    <div class="schedule-content">
-                        <h3>Talk 5 — Vera Liao</h3>
-                    </div>
-                </div>
-
-                <div class="schedule-item">
-                    <div class="schedule-time">14:45 – 15:30</div>
-                    <div class="schedule-content">
-                        <h3>Talk 6 — Jiawei Zhou</h3>
-                    </div>
-                </div>
-
-                <div class="schedule-item break">
-                    <div class="schedule-time">15:30 – 16:00</div>
-                    <div class="schedule-content">
-                        <h3>Coffee Break</h3>
-                    </div>
-                </div>
-
-                <div class="schedule-item">
-                    <div class="schedule-time">16:00 – 16:45</div>
-                    <div class="schedule-content">
-                        <h3>Talk 7 — Kuan-Hao Huang</h3>
-                    </div>
-                </div>
-
-                <div class="schedule-item">
-                    <div class="schedule-time">16:45 – 17:30</div>
-                    <div class="schedule-content">
-                        <h3>Talk 8 — Elias Stengel-Eskin</h3>
-                    </div>
-                </div>
-
-                <div class="schedule-item">
-                    <div class="schedule-time">17:30 – 17:40</div>
-                    <div class="schedule-content">
-                        <h3>Closing Remarks</h3>
-                        <p class="schedule-detail">Hanjie Chen &amp; Vicente Ordóñez</p>
-                    </div>
-                </div>
+            <div class="section-header">
+                <p class="section-label">Program</p>
+                <h2 class="section-title">Schedule</h2>
             </div>
+            <table class="schedule-table" aria-label="Workshop schedule">
+                <thead>
+                    <tr>
+                        <th scope="col">Time</th>
+                        <th scope="col">Session</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="break-row">
+                        <td class="schedule-time">8:30 – 9:00</td>
+                        <td>
+                            <div class="schedule-event">Registration &amp; Coffee</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="schedule-time">9:00 – 9:10</td>
+                        <td>
+                            <div class="schedule-event">Opening Remarks</div>
+                            <div class="schedule-speaker">Hanjie Chen &amp; Vicente Ordóñez</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="schedule-time">9:10 – 9:55</td>
+                        <td>
+                            <div class="schedule-event">
+                                Invited Talk 1
+                                <span class="schedule-tag talk">Talk</span>
+                            </div>
+                            <div class="schedule-speaker">Raymond J. Mooney</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="schedule-time">9:55 – 10:40</td>
+                        <td>
+                            <div class="schedule-event">
+                                Invited Talk 2
+                                <span class="schedule-tag talk">Talk</span>
+                            </div>
+                            <div class="schedule-speaker">Yangfeng Ji</div>
+                        </td>
+                    </tr>
+                    <tr class="break-row">
+                        <td class="schedule-time">10:40 – 11:00</td>
+                        <td>
+                            <div class="schedule-event">Coffee Break</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="schedule-time">11:00 – 11:45</td>
+                        <td>
+                            <div class="schedule-event">
+                                Invited Talk 3
+                                <span class="schedule-tag talk">Talk</span>
+                            </div>
+                            <div class="schedule-speaker">Arman Cohan</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="schedule-time">11:45 – 12:30</td>
+                        <td>
+                            <div class="schedule-event">
+                                Invited Talk 4
+                                <span class="schedule-tag talk">Talk</span>
+                            </div>
+                            <div class="schedule-speaker">Mark Yatskar</div>
+                        </td>
+                    </tr>
+                    <tr class="break-row">
+                        <td class="schedule-time">12:30 – 14:00</td>
+                        <td>
+                            <div class="schedule-event">Lunch Break</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="schedule-time">14:00 – 14:45</td>
+                        <td>
+                            <div class="schedule-event">
+                                Invited Talk 5
+                                <span class="schedule-tag talk">Talk</span>
+                            </div>
+                            <div class="schedule-speaker">Vera Liao</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="schedule-time">14:45 – 15:30</td>
+                        <td>
+                            <div class="schedule-event">
+                                Invited Talk 6
+                                <span class="schedule-tag talk">Talk</span>
+                            </div>
+                            <div class="schedule-speaker">Jiawei Zhou</div>
+                        </td>
+                    </tr>
+                    <tr class="break-row">
+                        <td class="schedule-time">15:30 – 16:00</td>
+                        <td>
+                            <div class="schedule-event">Coffee Break</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="schedule-time">16:00 – 16:45</td>
+                        <td>
+                            <div class="schedule-event">
+                                Invited Talk 7
+                                <span class="schedule-tag talk">Talk</span>
+                            </div>
+                            <div class="schedule-speaker">Kuan-Hao Huang</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="schedule-time">16:45 – 17:30</td>
+                        <td>
+                            <div class="schedule-event">
+                                Invited Talk 8
+                                <span class="schedule-tag talk">Talk</span>
+                            </div>
+                            <div class="schedule-speaker">Elias Stengel-Eskin</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="schedule-time">17:30 – 17:40</td>
+                        <td>
+                            <div class="schedule-event">Closing Remarks</div>
+                            <div class="schedule-speaker">Hanjie Chen &amp; Vicente Ordóñez</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </section>
 
-    <!-- Organizers Section -->
+    <!-- ===================== ORGANIZERS ===================== -->
     <section id="organizers" class="organizers">
         <div class="container">
-            <h2 class="section-title">Organizers</h2>
+            <div class="section-header">
+                <p class="section-label">Organizing Committee</p>
+                <h2 class="section-title">Organizers</h2>
+            </div>
             <div class="organizers-grid">
+
                 <div class="organizer-card">
                     <div class="organizer-photo">
                         <img src="assets/organizers/hanjie-chen.jpg" alt="Hanjie Chen">
                     </div>
-                    <h3 class="organizer-name"><a href="https://hanjiechen.github.io/" target="_blank" rel="noopener noreferrer">Hanjie Chen</a></h3>
-                    <p class="organizer-title">Assistant Professor</p>
-                    <p class="organizer-affiliation">Department of Computer Science<br>Rice University</p>
-                    <a href="mailto:hanjie@rice.edu" class="organizer-email">hanjie@rice.edu</a>
+                    <div class="organizer-info">
+                        <h3 class="organizer-name">
+                            <a href="https://hanjiechen.github.io/" target="_blank" rel="noopener noreferrer">Hanjie Chen</a>
+                        </h3>
+                        <p class="organizer-role">Assistant Professor</p>
+                        <p class="organizer-dept">Department of Computer Science<br>Rice University</p>
+                        <a href="mailto:hanjie@rice.edu" class="organizer-email">hanjie@rice.edu</a>
+                    </div>
                 </div>
 
                 <div class="organizer-card">
                     <div class="organizer-photo">
                         <img src="assets/organizers/vicente-ordonez.jpg" alt="Vicente Ordóñez">
                     </div>
-                    <h3 class="organizer-name"><a href="https://www.cs.rice.edu/~vo9/" target="_blank" rel="noopener noreferrer">Vicente Ordóñez</a></h3>
-                    <p class="organizer-title">Associate Professor</p>
-                    <p class="organizer-affiliation">Department of Computer Science<br>Rice University</p>
-                    <a href="mailto:vicenteor@rice.edu" class="organizer-email">vicenteor@rice.edu</a>
+                    <div class="organizer-info">
+                        <h3 class="organizer-name">
+                            <a href="https://www.cs.rice.edu/~vo9/" target="_blank" rel="noopener noreferrer">Vicente Ordóñez</a>
+                        </h3>
+                        <p class="organizer-role">Associate Professor</p>
+                        <p class="organizer-dept">Department of Computer Science<br>Rice University</p>
+                        <a href="mailto:vicenteor@rice.edu" class="organizer-email">vicenteor@rice.edu</a>
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Sponsors Section -->
+    <!-- ===================== SPONSORS ===================== -->
     <section id="sponsors" class="sponsors">
         <div class="container">
-            <h2 class="section-title">Sponsors</h2>
-            <div class="sponsors-list">
-                <div class="sponsor-item">
-                    <h3><a href="https://research.rice.edu/creative-ventures" target="_blank" rel="noopener noreferrer">Rice University Creative Ventures Funds</a></h3>
-                    <p>Office of Research</p>
+            <div class="section-header">
+                <p class="section-label">Acknowledgements</p>
+                <h2 class="section-title">Sponsors</h2>
+            </div>
+            <div class="sponsors-grid">
+
+                <div class="sponsor-card">
+                    <div class="sponsor-logo-box">
+                        <img src="assets/rice_logo/rice_sponsor_1.png" alt="Rice University Creative Ventures" class="sponsor-logo">
+                    </div>
+                    <div class="sponsor-divider"></div>
+                    <p class="sponsor-name">
+                        <a href="https://research.rice.edu/creative-ventures" target="_blank" rel="noopener noreferrer">
+                            Rice University Creative Ventures Funds
+                        </a>
+                    </p>
+                    <p class="sponsor-desc">Office of Research</p>
                 </div>
-                <div class="sponsor-item">
-                    <h3><a href="https://cs.rice.edu" target="_blank" rel="noopener noreferrer">Rice Engineering and Computing</a></h3>
-                    <p>Computer Science</p>
+
+                <div class="sponsor-card">
+                    <div class="sponsor-logo-box">
+                        <img src="assets/rice_logo/rice_cs_logo.png" alt="Rice Engineering and Computing" class="sponsor-logo">
+                    </div>
+                    <div class="sponsor-divider"></div>
+                    <p class="sponsor-name">
+                        <a href="https://cs.rice.edu" target="_blank" rel="noopener noreferrer">
+                            Rice Engineering and Computing
+                        </a>
+                    </p>
+                    <p class="sponsor-desc">Computer Science</p>
                 </div>
-                <div class="sponsor-item">
-                    <h3><a href="https://kenkennedy.rice.edu" target="_blank" rel="noopener noreferrer">Rice Ken Kennedy Institute</a></h3>
-                    <p>AI, Data, and Computing for Global Impact</p>
+
+                <div class="sponsor-card">
+                    <div class="sponsor-logo-box">
+                        <img src="assets/rice_logo/rice_sponsor_2_3.png" alt="Rice Ken Kennedy Institute" class="sponsor-logo">
+                    </div>
+                    <div class="sponsor-divider"></div>
+                    <p class="sponsor-name">
+                        <a href="https://kenkennedy.rice.edu" target="_blank" rel="noopener noreferrer">
+                            Rice Ken Kennedy Institute
+                        </a>
+                    </p>
+                    <p class="sponsor-desc">AI, Data, and Computing for Global Impact</p>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- ===================== FOOTER ===================== -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-info">
-                    <h3>Rice Workshop on Large Language Models</h3>
-                    <p>Department of Computer Science<br>Rice University<br>Houston, Texas</p>
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <img src="assets/rice_logo/rice_cs_logo.png" alt="Rice University">
+                    <p class="footer-brand-name">Rice Workshop on Large Language Models</p>
+                    <p>Department of Computer Science<br>Rice University · Houston, Texas 77005</p>
                 </div>
-                <div class="footer-links">
-                    <h4>Resources</h4>
-                    <ul>
+                <div>
+                    <p class="footer-col-title">Navigation</p>
+                    <ul class="footer-links">
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#speakers">Speakers</a></li>
+                        <li><a href="#schedule">Schedule</a></li>
+                        <li><a href="#organizers">Organizers</a></li>
+                        <li><a href="#sponsors">Sponsors</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="footer-col-title">Resources</p>
+                    <ul class="footer-links">
                         <li><a href="https://cs.rice.edu" target="_blank" rel="noopener noreferrer">Rice CS Department</a></li>
                         <li><a href="https://www.rice.edu" target="_blank" rel="noopener noreferrer">Rice University</a></li>
+                        <li><a href="https://RiceLLMWorkshop26.eventbrite.com" target="_blank" rel="noopener noreferrer">Register (Eventbrite)</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2026 Rice University. All rights reserved.</p>
+                <p>Department of Computer Science &middot; Houston, Texas</p>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
-    <script src="cny.js"></script>
+    <script>
+        // Mobile nav toggle — no animation library needed
+        const toggle = document.querySelector('.nav-toggle');
+        const menu   = document.querySelector('.nav-menu');
+
+        toggle.addEventListener('click', () => {
+            const open = menu.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', String(open));
+        });
+
+        // Close mobile menu on link click
+        menu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.remove('open');
+                toggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+    </script>
+
 </body>
 </html>
