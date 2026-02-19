@@ -33,7 +33,7 @@
             --dark-gray:       #44474F;
             --rice-gray:       #7C7E7F;
             --midnight:        #13133E;
-            --warm-yellow:     #E9A139;
+            --accent:          #7EB6D4;
 
             /* Neutral */
             --white:           #FFFFFF;
@@ -88,7 +88,7 @@
             top: 0;
             z-index: 100;
             background: var(--rice-blue);
-            border-bottom: 3px solid var(--warm-yellow);
+            border-bottom: 3px solid var(--accent);
         }
 
         .navbar .container {
@@ -142,7 +142,7 @@
         .nav-register {
             margin-left: 8px;
             padding: 7px 18px !important;
-            background: var(--warm-yellow) !important;
+            background: var(--accent) !important;
             color: var(--rice-blue) !important;
             font-weight: 700 !important;
             border-radius: 4px;
@@ -152,7 +152,7 @@
 
         .nav-register:hover {
             opacity: 0.88;
-            background: var(--warm-yellow) !important;
+            background: var(--accent) !important;
         }
 
         .nav-toggle {
@@ -230,7 +230,7 @@
             font-weight: 700;
             letter-spacing: 0.14em;
             text-transform: uppercase;
-            color: var(--warm-yellow);
+            color: var(--accent);
             margin-bottom: 22px;
         }
 
@@ -239,7 +239,7 @@
             display: block;
             width: 32px;
             height: 2px;
-            background: var(--warm-yellow);
+            background: var(--accent);
             flex-shrink: 0;
         }
 
@@ -270,7 +270,7 @@
             align-items: center;
             gap: 8px;
             padding: 13px 32px;
-            background: var(--warm-yellow);
+            background: var(--accent);
             color: var(--rice-blue);
             font-weight: 700;
             font-size: 0.9rem;
@@ -326,7 +326,7 @@
             display: block;
             width: 20px;
             height: 2px;
-            background: var(--warm-yellow);
+            background: var(--accent);
         }
 
         .section-title {
@@ -645,8 +645,6 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 24px;
-            max-width: 900px;
-            margin: 0 auto;
         }
 
         .sponsor-card {
@@ -664,15 +662,16 @@
         /* Fixed-size logo container — normalizes all logo aspect ratios */
         .sponsor-logo-box {
             width: 100%;
-            height: 80px;
+            height: 100px;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 0 12px;
         }
 
         .sponsor-logo {
-            max-width: 200px;
-            max-height: 80px;
+            max-width: 100%;
+            max-height: 100px;
             width: auto;
             height: auto;
             object-fit: contain;
@@ -811,7 +810,7 @@
                 background: var(--rice-blue);
                 flex-direction: column;
                 padding: 16px 0;
-                border-bottom: 3px solid var(--warm-yellow);
+                border-bottom: 3px solid var(--accent);
                 gap: 0;
             }
 
@@ -886,7 +885,7 @@
     <nav class="navbar" role="navigation" aria-label="Primary navigation">
         <div class="container">
             <div class="nav-brand">
-                <img src="assets/rice_logo/rice.png" alt="Rice University" class="nav-brand-logo">
+                <img src="assets/rice_logo/rice_cs_logo.png" alt="Rice University" class="nav-brand-logo">
                 <span>LLM Workshop 2026</span>
             </div>
             <ul class="nav-menu" id="nav-menu">
@@ -1041,7 +1040,7 @@
 
                 <article class="speaker-card">
                     <div class="speaker-photo">
-                        <img src="assets/speakers/vera-liao.jpg" alt="Vera Liao" class="photo-center">
+                        <img src="assets/speakers/vera-liao.jpg" alt="Vera Liao" style="object-position: center 15%;">
                     </div>
                     <div class="speaker-body">
                         <h3 class="speaker-name">
@@ -1335,7 +1334,7 @@
         <div class="container">
             <div class="footer-inner">
                 <div class="footer-brand">
-                    <img src="assets/rice_logo/rice.png" alt="Rice University">
+                    <img src="assets/rice_logo/rice_cs_logo.png" alt="Rice University">
                     <p class="footer-brand-name">Rice Workshop on Large Language Models</p>
                     <p>Department of Computer Science<br>Rice University · Houston, Texas 77005</p>
                 </div>
