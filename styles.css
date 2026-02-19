@@ -454,6 +454,58 @@ a:hover {
     color: rgba(255,255,255,0.45);
 }
 
+/* Registration CTA button */
+.hero-register-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 32px;
+    padding: 16px 36px;
+    background: linear-gradient(135deg, var(--rose-deep), var(--primary));
+    color: #fff;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    border-radius: 999px;
+    border: 1.5px solid rgba(255,255,255,0.2);
+    box-shadow: 0 6px 24px rgba(90, 30, 45, 0.45);
+    transition: transform var(--ease-md), box-shadow var(--ease-md), background var(--ease-md);
+    text-decoration: none;
+}
+
+.hero-register-btn:hover {
+    background: linear-gradient(135deg, #C08090, var(--primary-light));
+    transform: translateY(-3px);
+    box-shadow: 0 10px 32px rgba(90, 30, 45, 0.55);
+    color: #fff;
+}
+
+.hero-register-arrow {
+    font-size: 1.1rem;
+    transition: transform var(--ease);
+}
+
+.hero-register-btn:hover .hero-register-arrow {
+    transform: translateX(4px);
+}
+
+/* Nav register link — styled as a pill button */
+.nav-register {
+    background: var(--primary);
+    color: #fff !important;
+    padding: 6px 18px !important;
+    border-radius: 999px !important;
+    font-weight: 600 !important;
+    transition: background var(--ease), transform var(--ease) !important;
+}
+
+.nav-register:hover {
+    background: var(--rose-deep) !important;
+    color: #fff !important;
+    transform: translateY(-1px);
+}
+
 /* Tagline */
 .hero-tagline {
     font-family: var(--font-display);
@@ -719,6 +771,13 @@ a:hover {
 .schedule-item.highlight .schedule-content h3 {
     color: var(--primary);
     font-weight: 700;
+}
+
+.schedule-detail {
+    font-size: 0.88rem;
+    color: var(--text-light);
+    margin-top: 4px;
+    font-style: italic;
 }
 
 /* ===========================
@@ -1036,7 +1095,7 @@ a:hover {
     }
 
     .hero-title-top  { font-size: clamp(18px, 5vw, 28px); }
-    .hero-title-main { font-size: clamp(52px, 15vw, 86px); }
+    .hero-title-main { font-size: clamp(36px, 10vw, 72px); }
 
     /* Meta row — stack vertically, tighter padding */
     .hero-meta {
@@ -1087,6 +1146,13 @@ a:hover {
         font-size: 14px;
         letter-spacing: 0.06em;
     }
+
+    /* Register button */
+    .hero-register-btn {
+        margin-top: 20px;
+        padding: 13px 28px;
+        font-size: 0.88rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1107,7 +1173,7 @@ a:hover {
 
     .hero-stat-number { font-size: 28px; }
 
-    .hero-title-main { font-size: clamp(48px, 16vw, 72px); }
+    .hero-title-main { font-size: clamp(32px, 10vw, 60px); }
 }
 
 /* ===========================
