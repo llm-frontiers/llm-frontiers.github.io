@@ -11,9 +11,6 @@
     <meta property="og:description" content="A one-day workshop at Rice University bringing together researchers and practitioners to explore the forefront of LLM development and responsible AI practices.">
     <title>Rice Workshop on Large Language Models | Rice University</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         /* ===========================
@@ -46,9 +43,9 @@
             --text-light:      #7C7E7F;
             --border:          #D6DAE4;
 
-            /* Typography */
-            --font-serif:  'Crimson Pro', Georgia, serif;
-            --font-sans:   'Source Sans 3', system-ui, sans-serif;
+            /* Typography — system font stack (same as Bootstrap/Texas NLP) */
+            --font-serif:  Georgia, 'Times New Roman', serif;
+            --font-sans:   system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 
             /* Spacing */
             --section-py: 80px;
@@ -252,44 +249,13 @@
             font-weight: 300;
             line-height: 1.1;
             color: var(--white);
-            margin-bottom: 36px;
+            margin-bottom: 44px;
             letter-spacing: -0.01em;
         }
 
         .hero-title strong {
             font-weight: 600;
             display: block;
-        }
-
-        /* Info pills row */
-        .hero-info-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 40px;
-        }
-
-        .hero-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 9px 18px;
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.22);
-            border-radius: 100px;
-            backdrop-filter: blur(8px);
-        }
-
-        .hero-pill-icon {
-            font-size: 0.85rem;
-            opacity: 0.85;
-        }
-
-        .hero-pill-text {
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--white);
-            letter-spacing: 0.02em;
         }
 
         .hero-actions {
@@ -679,6 +645,8 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 24px;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .sponsor-card {
@@ -886,9 +854,6 @@
                 max-width: 100%;
             }
 
-            .hero-info-row {
-                gap: 8px;
-            }
         }
 
         @media (max-width: 480px) {
@@ -912,10 +877,6 @@
             .organizer-email {
                 justify-content: center;
             }
-
-            .hero-pill-text {
-                font-size: 0.82rem;
-            }
         }
     </style>
 </head>
@@ -925,7 +886,7 @@
     <nav class="navbar" role="navigation" aria-label="Primary navigation">
         <div class="container">
             <div class="nav-brand">
-                <img src="assets/rice_logo/rice_cs_logo.png" alt="Rice University" class="nav-brand-logo">
+                <img src="assets/rice_logo/rice.png" alt="Rice University" class="nav-brand-logo">
                 <span>LLM Workshop 2026</span>
             </div>
             <ul class="nav-menu" id="nav-menu">
@@ -959,21 +920,6 @@
                     Rice Workshop on<br>
                     <strong>Large Language Models</strong>
                 </h1>
-
-                <div class="hero-info-row">
-                    <span class="hero-pill">
-                        <span class="hero-pill-icon">📅</span>
-                        <span class="hero-pill-text">March 13, 2026</span>
-                    </span>
-                    <span class="hero-pill">
-                        <span class="hero-pill-icon">📍</span>
-                        <span class="hero-pill-text">Ralph S. O'Connor Building, 5th Floor</span>
-                    </span>
-                    <span class="hero-pill">
-                        <span class="hero-pill-icon">🎓</span>
-                        <span class="hero-pill-text">Rice University · Houston, Texas</span>
-                    </span>
-                </div>
 
                 <div class="hero-actions">
                     <a href="https://RiceLLMWorkshop26.eventbrite.com"
@@ -1356,7 +1302,7 @@
 
                 <div class="sponsor-card">
                     <div class="sponsor-logo-box">
-                        <img src="assets/rice_logo/rice_cs_logo.png" alt="Rice Engineering and Computing" class="sponsor-logo">
+                        <img src="assets/rice_logo/rice_sponsor_2.png" alt="Rice Engineering and Computing" class="sponsor-logo">
                     </div>
                     <div class="sponsor-divider"></div>
                     <p class="sponsor-name">
@@ -1369,7 +1315,7 @@
 
                 <div class="sponsor-card">
                     <div class="sponsor-logo-box">
-                        <img src="assets/rice_logo/rice_sponsor_2_3.png" alt="Rice Ken Kennedy Institute" class="sponsor-logo">
+                        <img src="assets/rice_logo/rice_sponsor_3.png" alt="Rice Ken Kennedy Institute" class="sponsor-logo">
                     </div>
                     <div class="sponsor-divider"></div>
                     <p class="sponsor-name">
@@ -1389,7 +1335,7 @@
         <div class="container">
             <div class="footer-inner">
                 <div class="footer-brand">
-                    <img src="assets/rice_logo/rice_cs_logo.png" alt="Rice University">
+                    <img src="assets/rice_logo/rice.png" alt="Rice University">
                     <p class="footer-brand-name">Rice Workshop on Large Language Models</p>
                     <p>Department of Computer Science<br>Rice University · Houston, Texas 77005</p>
                 </div>
